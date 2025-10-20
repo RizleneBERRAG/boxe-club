@@ -1,0 +1,67 @@
+.page-title{font-size:36px;margin:6px 0 18px}
+
+/* bandeau lieux */
+.venue-grid{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:14px}
+@media(max-width:800px){.venue-grid{grid-template-columns:1fr}}
+.venue{display:flex;gap:12px;align-items:center}
+.venue h3{margin:0;font-size:16px}
+.venue h3 span{color:#fff}
+.v-dot,.tl-dot{
+    width:10px;height:10px;border-radius:999px;background:#e33;box-shadow:0 0 0 3px rgba(225,6,0,.15)
+}
+.v-dot.alt,.tl-dot.alt{background:#38c172; box-shadow:0 0 0 3px rgba(56,193,114,.18)} /* vert pour Guimier */
+
+/* filtre jours sticky */
+.day-filter{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:8px 10px;margin:10px 0 16px}
+.stick{position:sticky; top:64px; z-index:5; backdrop-filter:blur(6px)}
+.day-btn{
+    background:rgba(255,255,255,.05); color:#ddd; border:1px solid rgba(255,255,255,.12);
+    padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700;
+    transition:background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease
+}
+.day-btn:hover{color:#fff; border-color:rgba(255,255,255,.25); transform:translateY(-1px)}
+.day-btn.is-active{background:#E10600; color:#fff; border-color:#E10600}
+
+/* panels */
+.day-panel{display:none}
+.day-panel.is-visible{display:block}
+
+/* timeline */
+.timeline{position:relative; padding:14px}
+.timeline::before{
+    content:""; position:absolute; left:28px; top:12px; bottom:12px; width:2px;
+    background:linear-gradient(to bottom, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    border-radius:2px
+}
+.tl-item{position:relative; display:grid; grid-template-columns:120px 24px 1fr; gap:12px; padding:12px 8px}
+@media(max-width:700px){.tl-item{grid-template-columns:100px 24px 1fr}}
+.tl-time{display:flex; flex-wrap:wrap; gap:6px; align-items:center; justify-content:flex-end; color:#ddd}
+.tl-time strong{font-size:16px}
+.tl-dot{align-self:center; justify-self:center}
+.tl-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px; padding:12px 14px;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease
+}
+.tl-card:hover{transform:translateY(-1px); box-shadow:0 12px 28px rgba(0,0,0,.45); border-color:rgba(255,255,255,.18)}
+.tl-title{margin:0 0 4px; font-size:18px}
+.tl-sub{margin:0}
+.tl-tag{
+    display:inline-block; margin-top:8px; font-size:12px; color:#eee;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+    padding:4px 8px; border-radius:999px
+}
+.mini-day{
+    display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; color:#ccc;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12)
+}
+
+.empty{padding:10px}
+
+/* CTA */
+.cta-row{display:flex;gap:14px;margin-top:16px}
+
+/* reveal */
+[data-reveal]{opacity:0; transform:translateY(6px); transition:opacity .6s ease, transform .6s ease}
+[data-reveal].visible{opacity:1; transform:none}

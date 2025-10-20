@@ -1,0 +1,5 @@
+.page-title{font-size:34px;margin:12px 0 22px}
+.gallery{display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.gallery{grid-template-columns:1fr}}
+.gallery img{width:100%;height:auto;border-radius:12px;display:block}

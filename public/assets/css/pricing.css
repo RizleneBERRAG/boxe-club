@@ -1,0 +1,140 @@
+.page-title{font-size:36px;margin:6px 0 18px}
+
+/* notice */
+.notice{display:flex; gap:12px; align-items:flex-start; margin-bottom:16px}
+.notice .dot{width:10px;height:10px;border-radius:999px;background:#38c172;box-shadow:0 0 0 3px rgba(56,193,114,.18);margin-top:6px}
+
+/* grid */
+.pricing-grid{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px}
+@media(max-width:1100px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:740px){.pricing-grid{grid-template-columns:1fr}}
+
+/* cards */
+.price-card{
+    position:relative; padding:18px; overflow:hidden;
+    background:linear-gradient(180deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.02) 100%);
+    border:1px solid rgba(255,255,255,.10);
+}
+.price-card.is-featured{
+    border-color:#E10600; box-shadow:0 18px 48px rgba(225,6,0,.22);
+}
+.price-card .badge{
+    position:absolute; top:12px; right:12px; background:#E10600; color:#fff;
+    padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.02em
+}
+.title{margin:0 0 8px; font-size:20px}
+.price-row{display:flex; align-items:flex-end; gap:6px; margin:10px 0 6px}
+.currency{font-size:18px; opacity:.9}
+.amount{font-size:36px; font-weight:800; letter-spacing:.02em}
+.period{color:#bbb}
+.split{color:#ddd; margin:0 0 8px}
+.desc{color:#ccc; margin:0 0 10px}
+.features{list-style:none; margin:10px 0 14px; padding:0}
+.features li{padding:6px 0; border-bottom:1px dashed rgba(255,255,255,.08)}
+.features li:last-child{border-bottom:0}
+.cta{width:100%; text-align:center}
+
+/* FAQ */
+.faq{margin-top:28px}
+.faq-title{font-size:22px; margin:0 0 10px}
+.faq-item{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10);
+    border-radius:12px; margin:8px 0; padding:8px 12px
+}
+.faq-item>summary{
+    cursor:pointer; list-style:none; font-weight:700; outline:none
+}
+.faq-item>summary::-webkit-details-marker{display:none}
+.faq-body{color:#ddd; padding:8px 0 4px}
+
+/* cta */
+.cta-row{display:flex;gap:14px;margin-top:18px}
+
+/* reveal */
+[data-reveal]{opacity:0; transform:translateY(6px); transition:opacity .6s ease, transform .6s ease}
+[data-reveal].visible{opacity:1; transform:none}
+
+.info-block{margin-top:16px}
+.sub{font-size:20px;margin:0 0 6px}
+.prices{margin:8px 0 0; padding-left:18px}
+.prices li{margin:4px 0}
+
+/* --- Tarifs & adhésions --- */
+.pricing-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.pricing-section h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.pricing-section .subtitle {
+    color: #aaa;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+
+/* --- Grille responsive centrée --- */
+/* ==== OVERRIDES FINAUX POUR TARIFS ==== */
+
+/* Grille centrée et fluide */
+./* === Grille tarifs : colonnes fixes & centrage parfait === */
+.pricing-grid{
+    display:grid;
+    /* Colonnes à largeur fixe : entre 300 et 320px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+    column-gap: 28px;
+    row-gap: 28px;
+    max-width: 1100px;       /* largeur max du bloc */
+    margin: 12px auto 0;     /* centre le bloc */
+    justify-content: center; /* centre les lignes incomplètes */
+}
+
+/* Chaque carte prend toute la colonne */
+.price-card{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    min-height: 440px;
+}
+
+.price-card .cta{
+    margin-top:auto;
+    width:100%;
+}
+
+
+/* Badge "Populaire" (une seule définition) */
+.price-card{ position:relative; }
+.price-card .badge{
+    position:absolute; top:12px; right:12px;
+    background:#E10600; color:#fff; font-size:12px;
+    padding:6px 10px; border-radius:999px; font-weight:800;
+}
+
+/* Nettoyage: on neutralise l'ancienne variante .pricing-card pour éviter les conflits */
+.pricing-card, .pricing-card .btn{ all: unset; }
+
+
+/* --- Étiquette "Populaire" --- */
+.popular-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--red);
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* --- Conteneur carte pour l’étiquette --- */
+.pricing-card-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}

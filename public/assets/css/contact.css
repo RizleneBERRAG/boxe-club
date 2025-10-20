@@ -1,0 +1,11 @@
+.page-title{font-size:34px;margin:12px 0 22px}
+.contact-form .row{display:flex;flex-direction:column;margin-bottom:14px}
+.contact-form label{font-weight:700;margin-bottom:6px}
+.contact-form input, .contact-form textarea{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12);
+    color:#fff; border-radius:8px; padding:10px 12px; outline:none;
+}
+.is-invalid{border-color:#ff6464}
+.err{color:#ff8080; font-size:14px; margin-top:6px}
+.success{border-left:4px solid #29d; color:#bfe1ff}
+.check label{font-weight:400}

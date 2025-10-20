@@ -1,0 +1,41 @@
+/* Hero */
+.hero .accent{color:var(--red)}
+.lead{max-width:600px}
+.actions{display:flex; gap:14px; margin-top:18px}
+.badges{display:flex; gap:10px; padding:0; margin:16px 0 0; list-style:none; flex-wrap:wrap}
+.badges li{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); padding:6px 10px; border-radius:999px; font-size:13px; color:#ddd}
+.hero-media img{width:100%; height:auto; border-radius:12px; display:block}
+
+/* Grids utilitaires */
+.grid-3{display:grid; gap:20px; grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1100px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.grid-3{grid-template-columns:1fr}}
+
+/* Features */
+.features h3{margin:0 0 6px; font-size:20px}
+
+/* Horaires */
+.section-title{font-size:22px; margin:0 0 12px}
+.sched{align-items:start}
+.sched-card{border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:14px}
+.sched-card .tt{margin:0 0 8px; font-size:18px}
+.slots{list-style:none; padding:0; margin:0}
+.slots li{display:grid; grid-template-columns:90px 1fr auto; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.06)}
+.slots li:last-child{border-bottom:0}
+.slots .d{color:#bbb}
+.slots .t{font-weight:700}
+.slots .loc{color:#bbb; font-size:14px}
+.mt{margin-top:10px}
+
+/* Témoignages */
+.testim .q{font-style:italic}
+.testim .author{color:#bbb; margin-top:8px}
+
+/* CTA finale */
+.cta{padding-top:0}
+.cta-box{display:flex; align-items:center; justify-content:space-between; gap:16px}
+@media(max-width:700px){.cta-box{flex-direction:column; align-items:stretch}}
+
+/* Effet reveal (utilisé par home.js) */
+.reveal{opacity:0; transform:translateY(8px); transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1; transform:none}

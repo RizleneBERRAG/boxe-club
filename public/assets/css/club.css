@@ -1,0 +1,6 @@
+.page-title{font-size:34px;margin:12px 0 22px}
+.grid-2{display:grid;gap:20px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:900px){.grid-2{grid-template-columns:1fr}}
+.bullets{margin:14px 0 0; padding-left:18px}
+.bullets li{margin:.25rem 0}
+.media img{width:100%;height:auto;border-radius:12px;display:block}
