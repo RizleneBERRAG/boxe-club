@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.minimal')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/enroll.css') }}">

@@ -5,22 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Team Bafounta' }}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
-    <script src="{{ asset('assets/js/header.js') }}" defer></script>
-
-
     @yield('styles')
 </head>
 <body>
-@include('partials.header')
-
 <main id="main" class="container">
     @yield('content')
 </main>
-
-@include('partials.footer')
-
 @yield('scripts')
 </body>
 </html>

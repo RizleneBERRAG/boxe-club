@@ -1,0 +1,327 @@
+/* ===== HEADER MINIMAL (.hdr-min) ===== */
+.hdr-min {
+    position: sticky;
+    top: 0;
+    z-index: 70;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 20px;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: saturate(130%) blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Logo centré et rond --- */
+.hdr-min .brand-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 8px;
+    width: 68px;
+    height: 68px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #141414;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    z-index: 2;
+}
+.hdr-min .brand-center img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Sections gauche et droite --- */
+.hdr-min .left-actions {
+    order: 1;
+    margin-left: 6px;
+    z-index: 3;
+}
+.hdr-min .right-actions {
+    order: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 6px;
+    z-index: 3;
+}
+.hdr-min .top-link {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.hdr-min .top-link:hover {
+    color: #fff;
+}
+
+/* --- Boutons --- */
+.hdr-min .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s, opacity 0.15s;
+}
+.hdr-min .btn.ghost {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #eee;
+}
+.hdr-min .btn.ghost:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+.hdr-min .btn.cta {
+    background: #E10600;
+    color: #fff;
+    box-shadow: 0 10px 26px rgba(225, 6, 0, 0.28);
+}
+.hdr-min .btn.cta:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+/* --- Burger (ouverture du menu) --- */
+.hdr-menu-open {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.hdr-menu-open span {
+    width: 18px;
+    height: 2px;
+    background: #fff;
+}
+
+/* --- Responsive simplifié --- */
+@media (max-width: 900px) {
+    .hdr-min {
+        height: 72px;
+        padding: 0 14px;
+    }
+    .hdr-min .brand-center {
+        width: 56px;
+        height: 56px;
+        top: 10px;
+    }
+    .hdr-min .right-actions .top-link {
+        display: none; /* cacher “Contact” si trop serré */
+    }
+}
+
+/* ===========================================================
+   === MODALE POP-UP (MENU CENTRÉ)
+   =========================================================== */
+.hdr-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px) saturate(130%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 98;
+}
+html.hdr-menu-open .hdr-menu-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- Fenêtre modale --- */
+.hdr-menu-modal {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 99;
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+    filter: blur(6px);
+    pointer-events: none;
+    transition:
+        opacity 0.45s cubic-bezier(0.2, 0.8, 0.3, 1),
+        transform 0.45s cubic-bezier(0.2, 0.8, 0.3, 1),
+        filter 0.45s ease;
+}
+html.hdr-menu-open .hdr-menu-modal {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+    pointer-events: auto;
+}
+
+/* --- Contenu principal --- */
+.hdr-menu-grid {
+    position: relative;
+    width: min(1000px, 92vw);
+    max-height: 86vh;
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(12px) saturate(130%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr 1.4fr;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+}
+html.hdr-menu-open .hdr-menu-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(225, 6, 0, 0.15), transparent 70%);
+    z-index: -1;
+}
+
+/* --- Colonne gauche (liens + infos) --- */
+.hdr-menu-left {
+    padding: 22px;
+    background: linear-gradient(180deg, #151515, #0f0f10);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.hdr-menu-title {
+    font: 600 14px/1.2 system-ui;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin: 0 0 6px;
+}
+.hdr-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.hdr-menu-list a {
+    display: block;
+    padding: 12px 10px;
+    border-radius: 10px;
+    color: #e6e6e6;
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease;
+}
+.hdr-menu-list a:hover {
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+}
+
+/* --- CTA et infos --- */
+.hdr-menu-ctas {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+.hdr-cta-primary {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #E10600;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(225, 6, 0, .25);
+}
+.hdr-cta-secondary {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+.hdr-menu-infos {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.hdr-menu-infos .row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.hdr-menu-infos .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .08);
+    color: #ddd;
+    text-decoration: none;
+}
+.hdr-menu-infos .ico {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .08);
+    color: #eee;
+    text-decoration: none;
+}
+
+/* --- Colonne droite (image/vidéo) --- */
+.hdr-menu-right {
+    position: relative;
+    background: #0c0c0d;
+    display: grid;
+    place-items: center;
+}
+.hdr-menu-visual {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(105%) contrast(105%);
+}
+
+/* --- Bouton de fermeture --- */
+.hdr-menu-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    background: rgba(255, 255, 255, .05);
+    color: #fff;
+    cursor: pointer;
+}
+
+/* --- Responsive : plein écran sur mobile --- */
+@media (max-width: 900px) {
+    .hdr-menu-grid {
+        grid-template-columns: 1fr;
+        width: 92vw;
+        max-height: 90vh;
+    }
+    .hdr-menu-right {
+        height: 32vh;
+    }
+}
