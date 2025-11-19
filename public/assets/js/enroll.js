@@ -68,3 +68,52 @@
     splitBox?.addEventListener('change', recompute);
     recompute();
 })();
+
+/* --- Copier tel / mail + feedback visuel --- */
+(function () {
+    const cards = document.querySelectorAll('.contact-card[data-copy]');
+    if (!cards.length) return;
+
+    const copyText = async (text) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } catch {
+            // fallback
+            const ta = document.createElement('textarea');
+            ta.value = text; document.body.appendChild(ta);
+            ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+            return true;
+        }
+    };
+
+    cards.forEach(card => {
+        const btn = card.querySelector('.contact-card__copy');
+
+        const giveFeedback = () => {
+            card.classList.add('is-copied');
+            btn.textContent = 'Copié !';
+            setTimeout(() => {
+                card.classList.remove('is-copied');
+                btn.textContent = 'Copier';
+            }, 1200);
+        };
+
+        // clic sur le bouton “Copier”
+        btn?.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const ok = await copyText(card.dataset.copy || '');
+            if (ok) giveFeedback();
+        });
+
+        // appui long sur la carte => copie aussi
+        let pressTimer;
+        card.addEventListener('touchstart', () => {
+            pressTimer = setTimeout(async () => {
+                const ok = await copyText(card.dataset.copy || '');
+                if (ok) giveFeedback();
+            }, 550);
+        });
+        card.addEventListener('touchend', () => clearTimeout(pressTimer));
+    });
+})();

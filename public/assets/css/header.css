@@ -1,327 +1,467 @@
-/* ===== HEADER MINIMAL (.hdr-min) ===== */
+/* ======================================================
+   HEADER PRINCIPAL — Team Bafounta
+   Compact + Thème clair/sombre + Switch iOS
+   ====================================================== */
+
+:root {
+    --hdr-h: 70px;
+    --brand-h: 50px;
+    --gap: 18px;
+    --cta: #E10600;
+    --cta-hover: #ff3b2e;
+
+    /* Valeurs par défaut (mode sombre) */
+    --bg: rgba(10,10,10,.90);
+    --surface-border: rgba(255,255,255,.06);
+    --text: #fff;
+    --btn-ghost-bg: rgba(255,255,255,.08);
+    --btn-ghost-border: rgba(255,255,255,.10);
+}
+
+/* ======================================================
+   BARRE DU HAUT
+   ====================================================== */
 .hdr-min {
-    position: sticky;
-    top: 0;
-    z-index: 70;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    padding: 0 20px;
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: saturate(130%) blur(6px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    position: sticky; top: 0; z-index: 70;
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    align-items: center; gap: 12px;
+    height: var(--hdr-h);
+    padding: 10px clamp(14px,3vw,28px);
+    background: var(--bg);
+    border-bottom: 1px solid var(--surface-border);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.28);
+    opacity: 0; transform: translateY(-6px);
+    animation: hdrIn .35s ease forwards;
 }
+@keyframes hdrIn { to { opacity: 1; transform: none; } }
 
-/* --- Logo centré et rond --- */
-.hdr-min .brand-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 8px;
-    width: 68px;
-    height: 68px;
-    display: inline-grid;
-    place-items: center;
-    border-radius: 999px;
-    overflow: hidden;
-    background: #141414;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-    z-index: 2;
-}
-.hdr-min .brand-center img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* --- Sections gauche et droite --- */
-.hdr-min .left-actions {
-    order: 1;
-    margin-left: 6px;
-    z-index: 3;
-}
-.hdr-min .right-actions {
-    order: 3;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: 6px;
-    z-index: 3;
-}
-.hdr-min .top-link {
-    color: #ddd;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.hdr-min .top-link:hover {
-    color: #fff;
-}
-
-/* --- Boutons --- */
-.hdr-min .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: transform 0.15s, opacity 0.15s;
-}
-.hdr-min .btn.ghost {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #eee;
-}
-.hdr-min .btn.ghost:hover {
-    transform: translateY(-1px);
-    opacity: 0.95;
-}
-.hdr-min .btn.cta {
-    background: #E10600;
-    color: #fff;
-    box-shadow: 0 10px 26px rgba(225, 6, 0, 0.28);
-}
-.hdr-min .btn.cta:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.05);
-}
-
-/* --- Burger (ouverture du menu) --- */
+/* ======================================================
+   BURGER MENU
+   ====================================================== */
 .hdr-menu-open {
-    width: 44px;
-    height: 44px;
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; border: 0; cursor: pointer;
+    background: var(--btn-ghost-bg);
+    border: 1px solid var(--btn-ghost-border);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    color: var(--text);
+    transition: transform .18s, background .18s, box-shadow .18s;
 }
 .hdr-menu-open span {
-    width: 18px;
-    height: 2px;
-    background: #fff;
+    width: 56%; height: 2px; background: currentColor;
+    margin: 0 auto; border-radius: 2px;
+}
+.hdr-menu-open:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,.12);
+    box-shadow: 0 6px 16px rgba(0,0,0,.35);
 }
 
-/* --- Responsive simplifié --- */
-@media (max-width: 900px) {
-    .hdr-min {
-        height: 72px;
-        padding: 0 14px;
-    }
-    .hdr-min .brand-center {
-        width: 56px;
-        height: 56px;
-        top: 10px;
-    }
-    .hdr-min .right-actions .top-link {
-        display: none; /* cacher “Contact” si trop serré */
-    }
-}
-
-/* ===========================================================
-   === MODALE POP-UP (MENU CENTRÉ)
-   =========================================================== */
-.hdr-menu-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(6px) saturate(130%);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-    z-index: 98;
-}
-html.hdr-menu-open .hdr-menu-backdrop {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* --- Fenêtre modale --- */
-.hdr-menu-modal {
-    position: fixed;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    z-index: 99;
-    opacity: 0;
-    transform: scale(0.92) translateY(30px);
-    filter: blur(6px);
-    pointer-events: none;
-    transition:
-        opacity 0.45s cubic-bezier(0.2, 0.8, 0.3, 1),
-        transform 0.45s cubic-bezier(0.2, 0.8, 0.3, 1),
-        filter 0.45s ease;
-}
-html.hdr-menu-open .hdr-menu-modal {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
-    pointer-events: auto;
-}
-
-/* --- Contenu principal --- */
-.hdr-menu-grid {
-    position: relative;
-    width: min(1000px, 92vw);
-    max-height: 86vh;
-    background: rgba(18, 18, 18, 0.85);
-    backdrop-filter: blur(12px) saturate(130%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1.1fr 1.4fr;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
-}
-html.hdr-menu-open .hdr-menu-grid::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(225, 6, 0, 0.15), transparent 70%);
-    z-index: -1;
-}
-
-/* --- Colonne gauche (liens + infos) --- */
-.hdr-menu-left {
-    padding: 22px;
-    background: linear-gradient(180deg, #151515, #0f0f10);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-.hdr-menu-title {
-    font: 600 14px/1.2 system-ui;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: #bbb;
-    margin: 0 0 6px;
-}
-.hdr-menu-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.hdr-menu-list a {
-    display: block;
-    padding: 12px 10px;
-    border-radius: 10px;
-    color: #e6e6e6;
-    text-decoration: none;
-    transition: background .15s ease, color .15s ease;
-}
-.hdr-menu-list a:hover {
-    background: rgba(255, 255, 255, .06);
-    color: #fff;
-}
-
-/* --- CTA et infos --- */
-.hdr-menu-ctas {
-    display: flex;
-    gap: 10px;
-    margin-top: 6px;
-}
-.hdr-cta-primary {
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 12px;
-    background: #E10600;
-    color: #fff;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 12px 30px rgba(225, 6, 0, .25);
-}
-.hdr-cta-secondary {
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, .06);
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, .12);
-}
-
-.hdr-menu-infos {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.hdr-menu-infos .row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-.hdr-menu-infos .chip {
+/* ======================================================
+   LOGO CENTRÉ
+   ====================================================== */
+.brand-center {
+    justify-self: center;
+    line-height: 0;
     display: inline-flex;
     align-items: center;
-    padding: 8px 10px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .06);
-    border: 1px solid rgba(255, 255, 255, .08);
-    color: #ddd;
-    text-decoration: none;
 }
-.hdr-menu-infos .ico {
-    display: inline-grid;
-    place-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, .06);
-    border: 1px solid rgba(255, 255, 255, .08);
-    color: #eee;
-    text-decoration: none;
-}
-
-/* --- Colonne droite (image/vidéo) --- */
-.hdr-menu-right {
-    position: relative;
-    background: #0c0c0d;
-    display: grid;
-    place-items: center;
-}
-.hdr-menu-visual {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.brand-center img {
+    height: var(--brand-h);
+    width: auto;
     display: block;
-    filter: saturate(105%) contrast(105%);
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
 }
 
-/* --- Bouton de fermeture --- */
-.hdr-menu-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 2;
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, .14);
-    background: rgba(255, 255, 255, .05);
+/* ======================================================
+   ACTIONS DROITE
+   ====================================================== */
+.right-actions {
+    display: flex; align-items: center; gap: var(--gap);
+}
+.right-actions .top-link {
+    color: color-mix(in oklab, var(--text) 85%, transparent);
+    font-weight: 600; text-decoration: none;
+    position: relative; transition: color .18s ease;
+}
+.right-actions .top-link::after {
+    content: "";
+    position: absolute; left: 0; bottom: -6px;
+    width: 0; height: 2px;
+    background: color-mix(in oklab, var(--text) 45%, transparent);
+    transition: width .18s ease;
+}
+.right-actions .top-link:hover { color: var(--text); }
+.right-actions .top-link:hover::after { width: 100%; }
+
+/* CTA principal */
+.right-actions .btn.cta {
+    background: var(--cta); color: #fff; font-weight: 800;
+    padding: 10px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 8px 24px rgba(225,6,0,.28);
+    transition: transform .18s, box-shadow .18s, background .18s;
+}
+.right-actions .btn.cta:hover {
+    background: var(--cta-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255,59,48,.35);
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+@media (max-width:860px){
+    :root{ --brand-h:44px; --hdr-h:66px }
+    .right-actions{ gap:12px }
+    .right-actions .top-link{ display:none }
+}
+@media (max-width:420px){
+    :root{ --brand-h:38px; --hdr-h:62px }
+    .hdr-menu-open{ width:38px; height:38px; border-radius:10px }
+    .right-actions .btn.cta{ padding:9px 14px; border-radius:12px }
+}
+
+/* ======================================================
+   SWITCH THEME — STYLE IOS
+   ====================================================== */
+.theme-switch {
+    --w: 54px; --h: 30px; --pad: 3px;
+    --thumb: calc(var(--h) - var(--pad)*2);
+    position: relative;
+    display: inline-flex; align-items: center;
+}
+.theme-switch__input {
+    position: absolute; inset: 0;
+    opacity: 0; pointer-events: none;
+}
+.theme-switch__label {
+    cursor: pointer; display: inline-grid;
+    align-items: center; width: var(--w); height: var(--h);
+    position: relative;
+}
+.theme-switch__track {
+    position: absolute; inset: 0;
+    background: var(--btn-ghost-bg);
+    border: 1px solid var(--btn-ghost-border);
+    border-radius: 999px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.09);
+    transition: background-color .25s, border-color .25s;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    font-size: 12px; padding: 0 var(--pad); color: var(--text);
+}
+.theme-switch__icon {
+    display: inline-flex; align-items: center; justify-content: center; opacity:.85;
+}
+.theme-switch__icon--sun { justify-self: start; }
+.theme-switch__icon--moon{ justify-self: end; }
+
+.theme-switch__thumb {
+    position: absolute; top: var(--pad); left: var(--pad);
+    width: var(--thumb); height: var(--thumb);
+    background: #fff; border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    transition: transform .25s, background-color .25s, box-shadow .25s;
+}
+
+/* Thème clair = switch activé */
+html[data-theme="light"] .theme-switch__track {
+    background: color-mix(in oklab, var(--cta) 86%, white 10%);
+    border-color: color-mix(in oklab, var(--cta) 40%, white 20%);
     color: #fff;
-    cursor: pointer;
+}
+html[data-theme="light"] .theme-switch__thumb {
+    transform: translateX(calc(var(--w) - var(--thumb) - var(--pad)*2));
+}
+.theme-switch__label:hover .theme-switch__thumb {
+    box-shadow: 0 3px 8px rgba(0,0,0,.22);
 }
 
-/* --- Responsive : plein écran sur mobile --- */
-@media (max-width: 900px) {
-    .hdr-menu-grid {
-        grid-template-columns: 1fr;
-        width: 92vw;
-        max-height: 90vh;
-    }
-    .hdr-menu-right {
-        height: 32vh;
+/* ======================================================
+   THÈMES — LIGHT / DARK
+   ====================================================== */
+html[data-theme="dark"] .theme-switch__track {
+    background: var(--btn-ghost-bg);
+    border-color: var(--btn-ghost-border);
+}
+html[data-theme="light"] {
+    --bg: rgba(255,255,255,.92);
+    --surface-border: rgba(0,0,0,.08);
+    --text: #111;
+    --btn-ghost-bg: rgba(0,0,0,.04);
+    --btn-ghost-border: rgba(0,0,0,.10);
+}
+html[data-theme="light"] .hdr-menu-open { color: #333; }
+html[data-theme="light"] .hdr-min {
+    box-shadow: 0 8px 22px rgba(0,0,0,.10);
+}
+html[data-theme="light"] .brand-center img {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.12));
+}
+
+/* ======================================================
+   FIXES VISUELS
+   ====================================================== */
+html[data-theme="light"] .theme-switch__track {
+    background: color-mix(in oklab, var(--cta) 70%, white 25%);
+    border-color: color-mix(in oklab, var(--cta) 40%, white 20%);
+}
+
+/* === PATCH VISUEL LIGHT + INDICATEUR DU MODE ======================= */
+
+/* Ombre + fond un rien plus lisibles en clair */
+html[data-theme="light"] .hdr-min{
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.10);
+}
+
+/* Lien "Contact" un peu plus contrasté en clair */
+html[data-theme="light"] .right-actions .top-link{
+    color: color-mix(in oklab, #111 78%, transparent);
+}
+html[data-theme="light"] .right-actions .top-link::after{
+    background: color-mix(in oklab, #111 40%, transparent);
+}
+
+/* Switch: taille un chouïa plus généreuse + label "Clair/Sombre" */
+/* On réserve un peu d’espace à droite du switch */
+.theme-switch {
+    --label-gap: 10px;       /* espace entre le bouton et le texte */
+    --label-w: 52px;         /* largeur réservée pour le mot Clair/Sombre */
+    padding-right: calc(var(--label-w) + var(--label-gap));
+    position: relative;
+}
+
+/* Position correcte de l’étiquette */
+.theme-switch__label::after {
+    left: calc(100% + var(--label-gap));
+    width: var(--label-w);
+    text-align: left;
+    white-space: nowrap;
+    font-size: 11.5px;
+    letter-spacing: .015em;
+}
+
+
+html[data-theme="light"] .theme-switch__label::after{ content: "Clair"; }
+
+/* Icônes du switch un peu plus visibles */
+.theme-switch__icon{ opacity: .95 }
+html[data-theme="light"] .theme-switch__icon{ opacity: 1 }
+
+/* Pastille avec léger liseré pour mieux ressortir en clair */
+.theme-switch__thumb{
+    box-shadow: 0 2px 6px rgba(0,0,0,.18), inset 0 0 0 1px rgba(0,0,0,.06);
+}
+/* On réduit un peu l’écart entre les éléments de droite */
+.hdr-min .right-actions {
+    gap: 18px;
+}
+
+/* Sur les écrans moyens et petits, on cache l’étiquette pour éviter tout débordement */
+@media (max-width: 1200px) {
+    .theme-switch { padding-right: 0; }
+    .theme-switch__label::after { content: ""; }
+}
+@media (max-width: 860px) {
+    .theme-switch { --w: 52px; --h: 30px; } /* switch plus compact */
+}
+/* Burger: lignes un peu plus marquées en clair */
+html[data-theme="light"] .hdr-menu-open{ color:#222 }
+
+@media (min-width: 861px){
+    :root{ --brand-h: 58px; --hdr-h: 82px; }
+}
+/* Unifier le style du track en thème clair */
+html[data-theme="light"] .theme-switch__track{
+    background: #f04b3f;                 /* fallback direct si color-mix non supporté */
+    border-color: #e63428;
+    color:#fff;
+}
+
+/* Si color-mix() est dispo, on affine */
+@supports (background: color-mix(in oklab, red 50%, white 50%)){
+    html[data-theme="light"] .theme-switch__track{
+        background: color-mix(in oklab, var(--cta) 86%, white 10%);
+        border-color: color-mix(in oklab, var(--cta) 40%, white 20%);
     }
 }
+
+/* Légère bordure sur le CTA en clair pour mieux flotter sur fond blanc */
+html[data-theme="light"] .right-actions .btn.cta{
+    border-color: rgba(0,0,0,.06);
+}
+
+/* Amélioration des icônes soleil/lune */
+html[data-theme="light"] .theme-switch__icon--sun { opacity: 1; }
+html[data-theme="dark"]  .theme-switch__icon--moon { opacity: 1; }
+
+/* Couleur du burger adaptée au thème */
+html[data-theme="light"] .hdr-menu-open { color: #222; }
+html[data-theme="dark"]  .hdr-menu-open { color: #fff; }
+
+/* ======================================================
+   MENU LATÉRAL — RESTORE (revient à l'ancien rendu)
+   Place ce bloc tout à la fin de header.css
+   ====================================================== */
+
+/* 1) Réactive le comportement modal de base */
+.hdr-menu-backdrop[hidden],
+.hdr-menu-modal[hidden] { display: none !important; }
+
+.hdr-menu-backdrop{
+    position: fixed; inset: 0; z-index: 990; /* au-dessus du header */
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(4px);
+    opacity: 0; transition: opacity .26s ease;
+}
+.hdr-menu-backdrop.is-visible{ opacity: 1; }
+
+.hdr-menu-modal{
+    position: fixed; inset: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none; opacity: 0;
+    transform: translateY(8px) scale(.98);
+    transition: opacity .26s ease, transform .26s ease;
+    /* fond “noir + halo rouge”, NON dépendant du thème */
+    background: radial-gradient(900px 600px at 70% 20%, rgba(225,6,0,.08), rgba(0,0,0,.96) 60%);
+}
+.hdr-menu-modal.is-open{
+    pointer-events: auto; opacity: 1; transform: none;
+}
+
+/* 2) Grille interne (gauche infos / droite visuels) */
+.hdr-menu-grid{
+    display: grid;
+    grid-template-columns: clamp(320px, 32vw, 460px) 1fr;
+    width: min(92vw, 1280px);
+    height: min(92vh, 820px);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 24px;
+    overflow: hidden;
+    background: #0c0c0c;             /* fixe, pas de variables thème */
+    box-shadow: 0 25px 60px rgba(0,0,0,.8);
+}
+
+/* 3) Colonne gauche (contenu) */
+.hdr-menu-left{
+    display: flex; flex-direction: column;
+    align-items: flex-start; justify-content: flex-start;
+    gap: 24px; padding: 36px 32px 28px;
+    color: #fff; position: relative; height: 100%;
+    overflow: auto; min-height: 0;
+    background: rgba(14,14,14,.78);
+    backdrop-filter: blur(10px) saturate(120%);
+}
+.hdr-menu-left::before{
+    content: ""; position: absolute; inset: 0 auto 0 0;
+    width: 4px; background: linear-gradient(180deg,#E10600,#ff3b2e);
+}
+.hdr-menu-title{
+    margin: 0 0 12px; font-size: 12px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+}
+
+/* Liens */
+.menu{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+.menu__link{
+    position: relative; display: inline-block;
+    font-size: 1.18rem; font-weight: 800; color: #fff; text-decoration: none;
+    transition: color .2s, transform .2s;
+}
+.menu__link:hover{ color: #E10600; transform: translateX(6px); }
+.menu__link::after{
+    content: ""; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
+    background: #E10600; transition: width .25s;
+}
+.menu__link:hover::after{ width: 100%; }
+
+/* CTA + chips + réseaux (identiques à l’ancien) */
+.hdr-cta-primary{
+    display: block; text-align: center; width: 100%;
+    background: #E10600; color: #fff; font-weight: 800;
+    padding: 16px; border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(225,6,0,.3);
+    transition: background .2s, transform .2s, box-shadow .2s;
+}
+.hdr-cta-primary:hover{ background:#ff3b2e; transform:translateY(-2px); box-shadow:0 10px 28px rgba(255,59,48,.4); }
+
+.hdr-menu-infos{ width:100%; font-size:14px; display:flex; flex-direction:column; gap:14px; margin-top:8px }
+.hdr-menu-infos .row{ display:flex; flex-wrap:wrap; gap:10px }
+.hdr-menu-infos .chip{
+    --bg: rgba(255,255,255,.06); --bd: rgba(255,255,255,.1);
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 14px; border-radius:12px;
+    background:var(--bg); border:1px solid var(--bd);
+    color:#fff; font-weight:600; text-decoration:none;
+    transition:background .25s, box-shadow .25s, transform .15s;
+}
+.hdr-menu-infos .chip:hover{ background:rgba(255,255,255,.12); transform:translateY(-1px); box-shadow:0 4px 14px rgba(0,0,0,.35) }
+.hdr-menu-infos .chip::before{
+    content:""; width:18px; height:18px; background:currentColor; opacity:.9;
+    -webkit-mask: var(--ico) center / contain no-repeat;
+    mask: var(--ico) center / contain no-repeat;
+}
+.hdr-menu-infos .chip[href^="tel:"]::before{
+    --ico: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.6 3.6 8.9 3c.6-.1 1.1.2 1.3.8l1 2.6c.2.6 0 1.2-.5 1.6l-1.2 1c.9 1.8 2.3 3.2 4.1 4.1l1-1.2c.4-.5 1-.7 1.6-.5l2.6 1c.6.2.9.7.8 1.3l-.6 2.3c-.2.6-.8 1-1.4 1-8.1-.4-14-6.3-14.4-14.4 0-.6.4-1.2 1-1.4Z"/></svg>');
+}
+.hdr-menu-infos .chip[href^="mailto:"]::before{
+    --ico: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2v.3l8 5 8-5V8H4Z"/></svg>');
+}
+.hdr-menu-infos .chip[href^="mailto:"]{ max-width:340px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+
+.hdr-socials{ display:flex; gap:10px; margin-top:8px }
+.ico{
+    display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:12px;
+    background:rgba(255,255,255,.06);
+    color:#fff; border:1px solid rgba(255,255,255,.08);
+    backdrop-filter: blur(6px);
+    transition: all .25s ease; box-shadow:0 0 0 rgba(225,6,0,0);
+}
+.ico svg{ width:22px; height:22px }
+.ico:hover{ transform:translateY(-3px); box-shadow:0 4px 16px rgba(225,6,0,0.25) }
+.ico--ig:hover{ background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); box-shadow:0 0 18px rgba(214,36,159,.45) }
+.ico--fb:hover{ background:#1877F2; box-shadow:0 0 18px rgba(24,119,242,.45) }
+
+/* 4) Colonne droite (3 visuels) */
+.hdr-menu-right{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 60% 40%;
+    grid-template-areas: "main main" "a b";
+    gap: 9px; padding: 1.5px; background: #000;
+    height: 100%; min-height: 0; min-width: 0;
+}
+.hdr-menu-right > img{
+    width:100%; height:100%; display:block; object-fit:cover; background:#000;
+    filter:brightness(.95) contrast(1.15);
+    transition: transform .35s ease, filter .25s ease;
+}
+.hdr-menu-right > img:nth-of-type(1){ grid-area: main; }
+.hdr-menu-right > img:nth-of-type(2){ grid-area: a; object-position: center 12%; }
+.hdr-menu-right > img:nth-of-type(3){ grid-area: b; object-position: center 22%; }
+.hdr-menu-right > img:hover{ transform: scale(1.04); filter: brightness(1.05) contrast(1.25); }
+
+/* 5) Bouton de fermeture */
+.hdr-menu-close{
+    position: absolute; top: 20px; right: 24px; z-index: 1010;
+    font-size: 24px; color: #fff; background: transparent; border: 0; cursor: pointer;
+    transition: color .2s, transform .2s;
+}
+.hdr-menu-close:hover{ color:#E10600; transform: rotate(90deg); }
+
+/* 6) Responsive identique à l'ancien */
+@media (max-width: 900px){
+    .hdr-menu-grid{ grid-template-columns: 1fr; width: 100%; height: 100%; border-radius: 0; }
+    .hdr-menu-right{ display: none; }
+}
+
+/* 7) Empêche le scroll body quand le menu est ouvert */
+html.is-menu-open{ overflow: hidden; }

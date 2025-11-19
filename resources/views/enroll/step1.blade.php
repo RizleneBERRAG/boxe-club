@@ -2,6 +2,8 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/enroll.css') }}">
+    <link rel="stylesheet" href="{{ asset('views/partials/footer') }}?v=2">
+
 @endsection
 
 @section('content')
