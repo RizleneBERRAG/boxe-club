@@ -13,11 +13,45 @@
     @endphp
 
     <section class="section">
-        <h1 class="page-title">Cours & Horaires</h1>
+
+        {{-- HERO COURS & HORAIRES --}}
+        <header class="courses-hero">
+            <div class="courses-hero__bg"></div>
+            <div class="courses-hero__overlay"></div>
+
+            <div class="courses-hero__content">
+                <p class="courses-hero__eyebrow">
+                    Team Bafounta · Lyon - Vénissieux
+                </p>
+
+                <h1 class="courses-hero__title">
+                    Cours & horaires
+                    <span>Planning hebdo</span>
+                </h1>
+
+                <p class="courses-hero__subtitle">
+                    Choisis le créneau qui te correspond : découverte, loisir,
+                    perfectionnement ou préparation compétition. On s’occupe du reste.
+                </p>
+
+                <div class="courses-hero__chips">
+                    <span class="courses-chip">Encadrement diplômé</span>
+                    <span class="courses-chip">Deux gymnases accessibles</span>
+                    <span class="courses-chip">Groupes par niveau & âge</span>
+                </div>
+            </div>
+
+            <div class="courses-hero__media" aria-hidden="true">
+                {{-- tu peux changer l’image par la tienne --}}
+                <img src="{{ asset('assets/img/ju.jpg') }}"
+                     alt="Séance de boxe Team Bafounta">
+            </div>
+        </header>
 
         {{-- Infos salles --}}
         <div class="venue-grid">
-            <div class="venue card">
+
+        <div class="venue card">
                 <div class="v-dot"></div>
                 <div>
                     <h3>Gymnase <span>Jacques Brel</span></h3>
@@ -104,10 +138,7 @@
             </section>
         </div>
 
-        <div class="cta-row">
-            <a class="btn btn-primary" href="{{ route('enroll.step1') }}">Séance d’essai gratuite</a>
-            <a class="link" href="{{ route('pricing') }}">Voir les tarifs</a>
-        </div>
+
     </section>
 @endsection
 

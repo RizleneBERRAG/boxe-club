@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.minimal')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/enroll.css') }}">
@@ -72,7 +72,7 @@
 
                 <label class="checkbox">
                     <input type="checkbox" id="usePassSport" name="use_passsport" value="1" {{ old('use_passsport')?'checked':'' }}>
-                    <span>Je bénéficie du <strong>Pass’Sport</strong> (–50,00 €) — justificatif demandé au club.</span>
+                    <span>Je bénéficie du <strong>Pass’Sport</strong> (–70,00 €) — justificatif demandé au club.</span>
                 </label>
             </div>
 
@@ -87,10 +87,8 @@
                 <a class="btn btn-ghost" href="{{ route('enroll.step1') }}">Retour</a>
             </div>
 
-            <input type="hidden" name="ref" value="{{ $enrollment->dossier_ref }}">
-
-
         <p class="help">CB = succès simulé (statut <strong>Payé</strong>). Les autres modes restent en <strong>En attente</strong>.</p>
+        </form>
     </section>
 @endsection
 

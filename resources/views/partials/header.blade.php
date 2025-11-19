@@ -1,78 +1,103 @@
 <header class="hdr-min" role="banner">
-    {{-- Bouton ouverture modale (menu) --}}
-    <button class="hdr-menu-open" type="button"
-            data-hdr-menu-open aria-haspopup="dialog" aria-controls="hdrMenu">
+    {{-- Bouton burger --}}
+    <button
+        class="hdr-menu-open"
+        type="button"
+        data-hdr-menu-open
+        aria-haspopup="dialog"
+        aria-controls="hdrMenu"
+        aria-expanded="false"
+        aria-label="Ouvrir le menu"
+    >
         <span></span><span></span><span></span>
     </button>
 
-    {{-- Action gauche : S’inscrire --}}
-    <div class="left-actions">
-        <a href="{{ route('enroll.step1') }}" class="btn ghost">S’inscrire</a>
-    </div>
+    {{-- CSS du header --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}?v=10">
 
-    {{-- Logo centré, rond --}}
-    <a href="{{ route('home') }}" class="brand-center" aria-label="Accueil">
-        <img src="{{ asset('assets/img/logo-team-bafounta.png') }}" alt="Team Bafounta" />
+    {{-- Logo centré --}}
+    <a href="{{ route('home') }}" class="brand-center" aria-label="Accueil Team Bafounta">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Team Bafounta" />
     </a>
 
-    {{-- Actions droites : Contact + CTA S’inscrire --}}
+    {{-- Actions à droite (switch + liens) --}}
     <div class="right-actions">
         <a href="{{ route('contact') }}" class="top-link">Contact</a>
         <a href="{{ route('enroll.step1') }}" class="btn cta">S’inscrire</a>
     </div>
 </header>
 
-{{-- === MENU MODALE CENTRÉ === --}}
+{{-- Backdrop modal --}}
 <div class="hdr-menu-backdrop" data-hdr-menu-backdrop hidden></div>
 
-<div id="hdrMenu" class="hdr-menu-modal"
-     role="dialog" aria-modal="true" aria-labelledby="hdrMenuTitle"
-     hidden data-hdr-menu>
-
-    <button class="hdr-menu-close" type="button"
-            aria-label="Fermer le menu" data-hdr-menu-close>✕</button>
-
+{{-- MENU MODAL --}}
+<div
+    id="hdrMenu"
+    class="hdr-menu-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="hdrMenuTitle"
+    hidden
+    data-hdr-menu
+    tabindex="-1"
+>
+    <button class="hdr-menu-close" type="button" aria-label="Fermer le menu" data-hdr-menu-close>✕</button>
     <div class="hdr-menu-grid">
-        {{-- Colonne gauche : navigation --}}
+        {{-- Colonne gauche : titre + liens + CTA + infos --}}
         <div class="hdr-menu-left">
-            <h2 id="hdrMenuTitle" class="hdr-menu-title">Navigation</h2>
-            <ul class="hdr-menu-list" role="menu">
-                <li role="none"><a role="menuitem" href="{{ route('enroll.step1') }}">Inscription</a></li>
-                <li role="none"><a role="menuitem" href="{{ route('club') }}">Le Club</a></li>
-                <li role="none"><a role="menuitem" href="{{ route('courses') }}">Cours & Horaires</a></li>
-                <li role="none"><a role="menuitem" href="{{ route('pricing') }}">Tarifs</a></li>
-                <li role="none"><a role="menuitem" href="{{ route('news.index') }}">Actualités</a></li>
-                <li role="none"><a role="menuitem" href="{{ route('gallery') }}">Galerie</a></li>
-                <li role="none"><a role="menuitem" href="{{ route('contact') }}">Contact</a></li>
-                <li role="none"><a role="menuitem" href="{{ route('legal') }}">Mentions légales</a></li>
+            <h2 id="hdrMenuTitle" class="hdr-menu-title">Team Bafounta</h2>
+            @php
+                $nbsp = "\u{00A0}";
+                $fmt  = static fn(string $s) => str_replace(' & ', $nbsp.'&'.$nbsp, $s);
+                $links = [
+                    ['route' => 'club',       'label' => $fmt('Le Club'),          'match' => ['club']],
+                    ['route' => 'courses',    'label' => $fmt('Cours & Horaires'), 'match' => ['courses']],
+                    ['route' => 'pricing',    'label' => $fmt('Tarifs'),           'match' => ['pricing']],
+                    ['route' => 'news.index', 'label' => $fmt('Actualités'),       'match' => ['news.*']],
+                    ['route' => 'boutique',    'label' => $fmt('Boutique'),          'match' => ['gallery']],
+                ];
+            @endphp
+            <ul class="menu" role="menu">
+                @foreach($links as $l)
+                    @php $active = request()->routeIs($l['match']); @endphp
+                    <li class="menu__item {{ $active ? 'is-active' : '' }}" role="none">
+                        <a class="menu__link" role="menuitem" href="{{ route($l['route']) }}">
+                            <span class="menu__label">{{ $l['label'] }}</span>
+                        </a>
+                    </li>
+                @endforeach
             </ul>
 
-            <div class="hdr-menu-ctas">
-                <a href="{{ route('enroll.step1') }}" class="hdr-cta-primary">S’inscrire</a>
-                <a href="{{ route('contact') }}" class="hdr-cta-secondary">Contact</a>
+            <div class="hdr-menu-ctas sticky-bottom">
+                <br>
+                <a href="{{ route('enroll.step1') }}" class="hdr-cta-primary">Rejoignez La Team Bafounta !</a>
             </div>
 
             <div class="hdr-menu-infos">
                 <div class="row">
-                    <a class="chip" href="tel:0636132175">06 36 13 21 75</a>
+                    <a class="chip" href="tel:0636132175">06 36 13 21 75</a><br>
                     <a class="chip" href="mailto:espaceecolesportboxe@gmail.com">espaceecolesportboxe@gmail.com</a>
                 </div>
-                <div class="row">
-                    <a class="ico" href="https://instagram.com" target="_blank" rel="noopener">IG</a>
-                    <a class="ico" href="https://facebook.com"  target="_blank" rel="noopener">FB</a>
+                <div class="row hdr-socials">
+                    <a class="ico ico--ig" href="https://www.instagram.com/teambafounta/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10Zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8Zm4.9-8.9a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z"/></svg>
+                    </a>
+                    <a class="ico ico--fb" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2H10a5 5 0 0 0-5 5v3H3v4h2v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3.5V2Z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
 
-        {{-- Colonne droite : visuel (image ou vidéo) --}}
+        {{-- Colonne droite : visuel pleine hauteur --}}
         <div class="hdr-menu-right">
-            <img src="{{ asset('assets/img/menu-visual.jpg') }}"
-                 alt="Ring Team Bafounta" class="hdr-menu-visual">
-            {{--
-            <video class="hdr-menu-visual" autoplay muted loop playsinline>
-              <source src="{{ asset('assets/video/menu.mp4') }}" type="video/mp4">
-            </video>
-            --}}
+            <img src="{{ asset('assets/img/menu2.jpg') }}" alt="">
+            <img src="{{ asset('assets/img/menu1.png') }}" alt="">
+            <img src="{{ asset('assets/img/jeremyboxe.jpg') }}" alt="">
         </div>
     </div>
 </div>
+
+{{-- JS du menu (ouvertures/fermetures, lock scroll, focus trap) --}}
+<script src="{{ asset('assets/js/header-menu.js') }}?v=3" defer></script>
+

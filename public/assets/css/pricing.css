@@ -1,140 +1,486 @@
 .page-title{font-size:36px;margin:6px 0 18px}
 
-/* notice */
-.notice{display:flex; gap:12px; align-items:flex-start; margin-bottom:16px}
-.notice .dot{width:10px;height:10px;border-radius:999px;background:#38c172;box-shadow:0 0 0 3px rgba(56,193,114,.18);margin-top:6px}
-
-/* grid */
-.pricing-grid{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px}
-@media(max-width:1100px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:740px){.pricing-grid{grid-template-columns:1fr}}
-
-/* cards */
-.price-card{
-    position:relative; padding:18px; overflow:hidden;
-    background:linear-gradient(180deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.02) 100%);
-    border:1px solid rgba(255,255,255,.10);
+/* notice (si utilisée ailleurs) */
+.notice{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    margin-bottom:16px;
 }
-.price-card.is-featured{
-    border-color:#E10600; box-shadow:0 18px 48px rgba(225,6,0,.22);
-}
-.price-card .badge{
-    position:absolute; top:12px; right:12px; background:#E10600; color:#fff;
-    padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.02em
-}
-.title{margin:0 0 8px; font-size:20px}
-.price-row{display:flex; align-items:flex-end; gap:6px; margin:10px 0 6px}
-.currency{font-size:18px; opacity:.9}
-.amount{font-size:36px; font-weight:800; letter-spacing:.02em}
-.period{color:#bbb}
-.split{color:#ddd; margin:0 0 8px}
-.desc{color:#ccc; margin:0 0 10px}
-.features{list-style:none; margin:10px 0 14px; padding:0}
-.features li{padding:6px 0; border-bottom:1px dashed rgba(255,255,255,.08)}
-.features li:last-child{border-bottom:0}
-.cta{width:100%; text-align:center}
-
-/* FAQ */
-.faq{margin-top:28px}
-.faq-title{font-size:22px; margin:0 0 10px}
-.faq-item{
-    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10);
-    border-radius:12px; margin:8px 0; padding:8px 12px
-}
-.faq-item>summary{
-    cursor:pointer; list-style:none; font-weight:700; outline:none
-}
-.faq-item>summary::-webkit-details-marker{display:none}
-.faq-body{color:#ddd; padding:8px 0 4px}
-
-/* cta */
-.cta-row{display:flex;gap:14px;margin-top:18px}
-
-/* reveal */
-[data-reveal]{opacity:0; transform:translateY(6px); transition:opacity .6s ease, transform .6s ease}
-[data-reveal].visible{opacity:1; transform:none}
-
-.info-block{margin-top:16px}
-.sub{font-size:20px;margin:0 0 6px}
-.prices{margin:8px 0 0; padding-left:18px}
-.prices li{margin:4px 0}
-
-/* --- Tarifs & adhésions --- */
-.pricing-section {
-    padding: 80px 0;
-    text-align: center;
+.notice .dot{
+    width:10px;
+    height:10px;
+    border-radius:999px;
+    background:#38c172;
+    box-shadow:0 0 0 3px rgba(56,193,114,.18);
+    margin-top:6px;
 }
 
-.pricing-section h1 {
-    font-size: 42px;
+/* ===========================
+   HERO TARIFS
+   =========================== */
+
+.pricing-hero{
+    max-width: 960px;
+    margin: 0 auto 32px;
+    padding: 8px 0 4px;
+    text-align: left;
+    position: relative;
+}
+
+.pricing-hero__eyebrow{
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
     margin-bottom: 8px;
 }
 
-.pricing-section .subtitle {
-    color: #aaa;
-    margin-bottom: 40px;
-    font-size: 15px;
+.pricing-hero__title{
+    margin: 0 0 6px;
+    font-size: clamp(30px, 4vw, 40px);
+    font-weight: 900;
+    line-height: 1.1;
+    position: relative;
+    display: inline-block;
 }
 
-/* --- Grille responsive centrée --- */
-/* ==== OVERRIDES FINAUX POUR TARIFS ==== */
-
-/* Grille centrée et fluide */
-./* === Grille tarifs : colonnes fixes & centrage parfait === */
-.pricing-grid{
-    display:grid;
-    /* Colonnes à largeur fixe : entre 300 et 320px */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
-    column-gap: 28px;
-    row-gap: 28px;
-    max-width: 1100px;       /* largeur max du bloc */
-    margin: 12px auto 0;     /* centre le bloc */
-    justify-content: center; /* centre les lignes incomplètes */
-}
-
-/* Chaque carte prend toute la colonne */
-.price-card{
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    min-height: 440px;
-}
-
-.price-card .cta{
-    margin-top:auto;
-    width:100%;
-}
-
-
-/* Badge "Populaire" (une seule définition) */
-.price-card{ position:relative; }
-.price-card .badge{
-    position:absolute; top:12px; right:12px;
-    background:#E10600; color:#fff; font-size:12px;
-    padding:6px 10px; border-radius:999px; font-weight:800;
-}
-
-/* Nettoyage: on neutralise l'ancienne variante .pricing-card pour éviter les conflits */
-.pricing-card, .pricing-card .btn{ all: unset; }
-
-
-/* --- Étiquette "Populaire" --- */
-.popular-tag {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: var(--red);
-    color: #fff;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 8px;
+.pricing-hero__title span{
+    font-size: .55em;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: .18em;
+    margin-left: 10px;
+    color: #E10600;
 }
 
-/* --- Conteneur carte pour l’étiquette --- */
-.pricing-card-wrapper {
-    position: relative;
+/* petit trait sous le titre */
+.pricing-hero__title::after{
+    content:"";
+    display:block;
+    width: 78px;
+    height: 2px;
+    margin-top: 8px;
+    background: linear-gradient(90deg, #E10600, transparent);
+    border-radius: 999px;
+}
+
+.pricing-hero__subtitle{
+    margin: 10px 0 14px;
+    max-width: 620px;
+    font-size: 14px;
+    color: #d0d0d0;
+}
+
+/* chips sous le texte */
+.pricing-hero__chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.pricing-chip{
+    font-size: 12px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: radial-gradient(circle at top left,
+    rgba(225,6,0,.32), rgba(10,10,10,1));
+    color:#f5f5f5;
+    white-space:nowrap;
+}
+
+/* mobile hero */
+@media (max-width: 700px){
+    .pricing-hero{
+        text-align:left;
+    }
+    .pricing-hero__chips{
+        gap:6px;
+    }
+}
+
+/* ===========================
+   BANDEAU COURS D'ESSAI
+   =========================== */
+
+.try-banner{
+    max-width: 1100px;
+    margin: 28px auto 36px;
+    padding: 16px 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.08);
+    background:
+        radial-gradient(circle at top left, rgba(225,6,0,.45), rgba(0,0,0,1));
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.7),
+        0 0 40px rgba(225,6,0,.25);
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+.try-banner__left{
+    max-width: 280px;
+}
+
+.try-banner__pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,.7);
+    border: 1px solid rgba(255,255,255,.18);
+    color:#f5f5f5;
+    margin-bottom:6px;
+}
+
+.try-banner__intro{
+    margin: 0;
+    font-size: 13px;
+    color: #f0f0f0;
+}
+
+.try-banner__center{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:4px;
+    flex:1;
+}
+
+.try-banner__col{
+    display:inline-flex;
+    align-items:baseline;
+    gap:8px;
+    margin-right:18px;
+}
+
+.try-banner__label{
+    font-size:13px;
+    color:#f5f5f5;
+}
+
+.try-banner__price{
+    font-size:20px;
+    font-weight:800;
+}
+
+.try-banner__note{
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: rgba(255,255,255,.8);
+}
+
+.try-banner__right{
+    margin-left:auto;
+    flex-shrink:0;
+}
+
+.try-banner__btn{
+    white-space:nowrap;
+}
+
+/* responsive bandeau */
+@media (max-width: 800px){
+    .try-banner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+    .try-banner__right{
+        width:100%;
+    }
+    .try-banner__btn{
+        width:100%;
+        text-align:center;
+    }
+}
+
+/* ===========================
+   GRILLE TARIFS
+   =========================== */
+
+.pricing-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+    column-gap:28px;
+    row-gap:28px;
+    max-width:1100px;
+    margin:12px auto 0;
+    justify-content:center;
+}
+
+/* cartes prix */
+.price-card{
+    position:relative;
+    padding:18px;
+    overflow:hidden;
+    background:linear-gradient(180deg,
+    rgba(255,255,255,.04) 0%,
+    rgba(255,255,255,.02) 100%);
+    border:1px solid rgba(255,255,255,.10);
+    display:flex;
+    flex-direction:column;
+    min-height:440px;
+}
+
+.price-card.is-featured{
+    border-color:#E10600;
+    box-shadow:0 18px 48px rgba(225,6,0,.22);
+}
+
+.price-card .badge{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:#E10600;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.02em;
+}
+
+.price-card__title{
+    margin:0 0 8px;
+    font-size:20px;
+}
+.price-card__row{
+    display:flex;
+    align-items:flex-end;
+    gap:6px;
+    margin:10px 0 6px;
+}
+.price-card__currency{
+    font-size:18px;
+    opacity:.9;
+}
+.price-card__amount{
+    font-size:36px;
+    font-weight:800;
+    letter-spacing:.02em;
+}
+.price-card__period{
+    color:#bbb;
+}
+.price-card__split{
+    color:#ddd;
+    margin:0 0 8px;
+}
+.price-card__desc{
+    color:#ccc;
+    margin:0 0 10px;
+}
+.price-card__list{
+    list-style:none;
+    margin:10px 0 14px;
+    padding:0;
+}
+.price-card__list li{
+    padding:6px 0;
+    border-bottom:1px dashed rgba(255,255,255,.08);
+}
+.price-card__list li:last-child{
+    border-bottom:0;
+}
+.price-card__btn{
+    width:100%;
+    text-align:center;
+    margin-top:auto;
+}
+
+/* ===========================
+   LOGO LIBRE DANS LA GRILLE
+   =========================== */
+
+.pricing-logo-free{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:260px;
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+    padding:0;
+}
+
+.pricing-logo-free img{
+    width:180px; /* tu peux monter à 200 si tu veux plus gros */
+    height:auto;
+    object-fit:contain;
+    filter:drop-shadow(0 0 18px rgba(225,6,0,.55));
+    animation:pricingLogoFloat 4.5s ease-in-out infinite;
+}
+
+/* animation douce du logo */
+@keyframes pricingLogoFloat{
+    0%,100%{
+        transform:translateY(0);
+        opacity:1;
+    }
+    50%{
+        transform:translateY(-6px);
+        opacity:.96;
+    }
+}
+
+/* ===========================
+   BLOCS INFOS (bas de page)
+   =========================== */
+
+.info-row{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap:24px;
+    max-width:1000px;       /* centre comme les cartes tarifs */
+    margin:40px auto 0;     /* centré */
+    justify-content:center; /* centre les lignes incomplètes */
+}
+
+.info-row--bottom{
+    margin-top:20px;
+}
+.info-row--full{
+    max-width:1100px;
+}
+
+.info-block{
+    margin-top:0;
+    background:linear-gradient(180deg,
+    rgba(255,255,255,.035),
+    rgba(255,255,255,.015));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:16px 18px 18px;
+}
+.info-block--accent{
+    border-color:#E10600;
+    box-shadow:0 0 30px rgba(225,6,0,.25);
+}
+
+.sub,
+.info-title{
+    font-size:18px;
+    margin:0 0 6px;
+}
+.prices,
+.info-list{
+    margin:8px 0 0;
+    padding-left:18px;
+}
+.prices li,
+.info-list li{
+    margin:3px 0;
+}
+.muted,
+.info-text{
+    color:#ccc;
+    margin:0;
+}
+.small,
+.info-text--small{
+    font-size:13px;
+}
+.mt-8{
+    margin-top:8px;
+}
+
+/* FAQ bloc */
+.info-faq{
+    margin-top:0;
+    background:linear-gradient(180deg,
+    rgba(255,255,255,.035),
+    rgba(255,255,255,.015));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:18px 20px 20px;
+}
+.faq-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px 22px;
+    margin-top:10px;
+}
+.faq-item h3{
+    margin:0 0 4px;
+    font-size:14px;
+}
+.faq-item p{
+    margin:0;
+    font-size:13px;
+    color:#d0d0d0;
+}
+
+/* CTA row (tout en bas si utilisée) */
+.cta-row{
+    display:flex;
+    gap:14px;
+    margin-top:26px;
+}
+
+/* ==============
+   REVEAL ANIM
+   ============== */
+
+[data-reveal]{
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity .6s ease, transform .6s ease;
+}
+[data-reveal].visible{
+    opacity:1;
+    transform:none;
+}
+
+/* ==============
+   RESPONSIVE GLOBALE
+   ============== */
+
+@media(max-width:740px){
+    .pricing-grid{
+        grid-template-columns:1fr;
+        max-width:480px;
+    }
+    .cta-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+.hero-with-video{
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    padding: 40px 28px;
+    margin-bottom: 32px;
+}
+
+.hero-video{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .22; /* ultra léger */
+    filter: blur(3px) saturate(1.1);
+    z-index: 1;
+}
+
+.hero-overlay{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.75), rgba(0,0,0,.82));
+    z-index: 2;
+}
+
+/* contenu au-dessus */
+.hero-with-video > *:not(video):not(.hero-overlay){
+    position: relative;
+    z-index: 3;
 }

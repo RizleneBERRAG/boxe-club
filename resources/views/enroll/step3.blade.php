@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.minimal')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/attestation.css') }}">
@@ -124,7 +124,9 @@
                     <div class="mail">espaceecolesportboxe@gmail.com</div>
                 </div>
                 <div class="legal">
-                    <a href="{{ route('legal') }}">Mentions légales & RGPD</a>
+                    <a href="{{ asset('assets/docs/mentions-legales-rgpd.pdf') }}" download rel="noopener">
+                        Mentions légales &amp; RGPD
+                    </a>
                 </div>
             </footer>
 
