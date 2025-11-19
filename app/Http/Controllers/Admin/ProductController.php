@@ -21,7 +21,6 @@ class ProductController extends Controller
         return view('admin.products.create');
     }
 
-
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -34,15 +33,16 @@ class ProductController extends Controller
             'sizes.*'     => 'string|max:10',
         ]);
 
-        $data['slug'] = Str::slug($data['name']);
+        // slug + prix en centimes
+        $data['slug']        = Str::slug($data['name']);
         $data['price_cents'] = (int) round($data['price'] * 100);
-        $data['sizes'] = $data['sizes'] ?? [];
+        $data['sizes']       = $data['sizes'] ?? [];
 
         if ($request->hasFile('image')) {
             $data['image_path'] = $request->file('image')->store('products', 'public');
         }
 
-        // par défaut visible
+        // par défaut, produit visible
         $data['is_active'] = $request->boolean('is_active', true);
 
         Product::create($data);
@@ -52,6 +52,10 @@ class ProductController extends Controller
             ->with('success', 'Produit créé avec succès.');
     }
 
+    public function edit(Product $product)
+    {
+        return view('admin.products.edit', compact('product'));
+    }
 
     public function update(Request $request, Product $product)
     {
@@ -60,7 +64,7 @@ class ProductController extends Controller
             'price'       => 'required|numeric|min:0',
             'description' => 'nullable|string',
             'image'       => 'nullable|image|max:2048',
-            'is_active'   => 'boolean',
+            'is_active'   => 'nullable|boolean',
             'sizes'       => 'array',
             'sizes.*'     => 'string|max:10',
         ]);
@@ -70,7 +74,7 @@ class ProductController extends Controller
         }
 
         $data['price_cents'] = (int) round($data['price'] * 100);
-        $data['sizes'] = $data['sizes'] ?? [];
+        $data['sizes']       = $data['sizes'] ?? [];
 
         if ($request->hasFile('image')) {
             $data['image_path'] = $request->file('image')->store('products', 'public');
@@ -80,12 +84,9 @@ class ProductController extends Controller
 
         $product->update($data);
 
-    }
-
-
-    public function edit(Product $product)
-    {
-        return view('admin.products.edit', compact('product'));
+        return redirect()
+            ->route('admin.products.index')
+            ->with('success', 'Produit mis à jour.');
     }
 
     public function destroy(Product $product)

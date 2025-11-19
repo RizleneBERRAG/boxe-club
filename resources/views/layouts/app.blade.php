@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/boutique.css') }}">
+    -<link rel="stylesheet" href="{{ asset('css/boutique.css') }}">
+    +<!-- Load boutique styles from assets folder -->
+    +<link rel="stylesheet" href="{{ asset('assets/css/boutique.css') }}">
     <script src="{{ asset('assets/js/header.js') }}" defer></script>
 
 
