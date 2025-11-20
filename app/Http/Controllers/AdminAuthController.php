@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AdminAuthController extends Controller
 {
@@ -14,45 +13,37 @@ class AdminAuthController extends Controller
 
     public function login(Request $request)
     {
+        // Les 2 champs de ton formulaire : name="login" et name="password"
         $credentials = $request->validate([
-            'identifier' => 'required|string',
-            'password'   => 'required|string',
+            'login'    => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        $login    = $credentials['identifier'];
+        $login    = $credentials['login'];
         $password = $credentials['password'];
-        $remember = false;
 
-        // Tentative par email
-        $ok = Auth::attempt([
-            'email'    => $login,
-            'password' => $password,
-            'is_admin' => 1,
-        ], $remember);
-
-        // Si échec, tentative par name (nom d'utilisateur)
-        if (!$ok) {
-            $ok = Auth::attempt([
-                'name'     => $login,
-                'password' => $password,
-                'is_admin' => 1,
-            ], $remember);
-        }
-
-        if ($ok) {
+        // On compare avec config/admin.php
+        if (
+            $login === config('admin.login') &&
+            hash_equals(config('admin.password'), $password)
+        ) {
+            // On marque l'admin comme connecté
+            $request->session()->put('is_admin', true);
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
+
+            // Va sur le dashboard
+            return redirect()->intended(route('admin.dashboard'));
         }
 
+        // Sinon on revient au formulaire avec un message
         return back()
-            ->withErrors(['identifier' => 'Identifiants invalides.'])
-            ->withInput($request->only('identifier'));
+            ->withErrors(['login' => 'Identifiants incorrects.'])
+            ->withInput($request->only('login'));
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
-
+        $request->session()->forget('is_admin');
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Middleware\AdminOnly;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +27,11 @@ Route::view('/actualites', 'pages.news')->name('news.index');
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::view('/mentions-legales', 'pages.legal')->name('legal');
 
-// Formulaire de contact (POST)
+// Formulaire de contact
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
 
-// Boutique publique (affiche les produits)
+// Boutique publique
 Route::get('/boutique', [ShopController::class, 'index'])->name('boutique');
-
-// Réservation produit
 Route::post('/reservation', [ShopController::class, 'reserve'])->name('reservation.submit');
 
 // Inscription (multi-étapes)
@@ -49,28 +48,25 @@ Route::prefix('inscription')->group(function () {
 
 // ======================= ADMIN =======================
 
-Route::prefix('admin')->name('admin.')->group(function () {
+// --- Auth admin (PUBLIQUE, pas de middleware) ---
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])
+    ->name('admin.login');
 
-    // --- Auth admin (publique) ---
-    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])
+    ->name('admin.login.submit');
 
-    // logout admin
-    Route::post('/logout', [AdminAuthController::class, 'logout'])
-        ->middleware('admin')
-        ->name('logout');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])
+    ->name('admin.logout');
 
-    // --- Zone protégée ---
-    Route::middleware('admin')->group(function () {
+// --- Zone protégée admin ---
+Route::prefix('admin')
+    ->middleware(AdminOnly::class)
+    ->name('admin.')
+    ->group(function () {
 
-        // Dashboard principal
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])
+            ->name('dashboard');  // => route('admin.dashboard')
 
-        // Gestion des produits boutique
-        Route::resource('products', ProductController::class)->except(['show']);
-
-        // (plus tard) : suivis paiements, dossiers, etc.
-        // Route::get('/enrollments', [...])->name('enrollments.index');
-        // Route::get('/payments', [...])->name('payments.index');
+        Route::resource('products', ProductController::class)
+            ->except(['show']);
     });
-});

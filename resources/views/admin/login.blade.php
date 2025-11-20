@@ -1,45 +1,39 @@
-@extends('layouts.app')
+@extends('layouts.minimal-admin')
 
-@section('styles')
-    <!-- Feuilles de styles pour la page d’authentification -->
-    <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
-@endsection
+@section('title', 'Espace responsable')
 
 @section('content')
-    <div class="admin-login-page">
-        <h1 class="text-2xl font-bold mb-6">Espace responsable</h1>
+    <div class="login-page">
+        <h1 class="login-title">Espace Mampuya</h1>
+        <p class="login-subtitle">Connecte-toi pour gérer la boutique Team Bafounta.</p>
 
-        <form method="POST" action="{{ route('admin.login.submit') }}" class="admin-login-form space-y-4">
+        @if ($errors->any())
+            <div class="admin-alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('admin.login.submit') }}" class="login-form">
             @csrf
 
-            <div class="field">
-                <label for="identifier" class="block mb-1">Identifiant</label>
-                <input id="identifier"
-                       type="text"
-                       name="identifier"
-                       value="{{ old('identifier') }}"
-                       required
-                       class="w-full rounded-md border border-gray-600 px-3 py-2 bg-gray-800 text-white">
+            <div class="form-group">
+                <label for="login">Identifiant</label>
+                <input type="text" id="login" name="login" value="{{ old('login') }}" required>
             </div>
 
-            <div class="field">
-                <label for="password" class="block mb-1">Mot de passe</label>
-                <input id="password"
-                       type="password"
-                       name="password"
-                       required
-                       class="w-full rounded-md border border-gray-600 px-3 py-2 bg-gray-800 text-white">
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
             </div>
 
-            @if($errors->has('identifier'))
-                <p class="text-red-500 text-sm">Identifiants incorrects.</p>
-            @endif
-
-            <button type="submit"
-                    class="btn btn-primary px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 text-white font-semibold">
-                Se connecter
-            </button>
+            <div class="login-actions">
+                <button class="btn-primary">Se connecter</button>
+            </div>
         </form>
+
     </div>
 @endsection

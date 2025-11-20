@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/boutique.css') }}?v=3">
-@endsection
-
 @section('content')
     <div class="shop-page">
 
@@ -62,7 +57,9 @@
                         <div class="product-body">
                             <div class="product-header">
                                 <h2 class="product-name">{{ $product->name }}</h2>
-                                <p class="product-description">{{ $product->description }}</p>
+                                @if($product->description)
+                                    <p class="product-description">{{ $product->description }}</p>
+                                @endif
                             </div>
 
                             <div class="product-footer">
