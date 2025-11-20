@@ -11,15 +11,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Tu adaptes selon ce que tu as
-        $productsCount   = Product::count();
-        $enrollmentsCount = class_exists(Enrollment::class) ? Enrollment::count() : null;
-        $paymentsCount    = class_exists(Payment::class) ? Payment::count() : null;
+        {
+        return view('admin.dashboard', [
+            'productCount' => Product::count(),
+            'enrollmentCount' => Enrollment::count(),
+            'paymentCount' => Payment::count(),
+        ]);
+    }
 
-        return view('admin.dashboard', compact(
-            'productsCount',
-            'enrollmentsCount',
-            'paymentsCount'
-        ));
     }
 }

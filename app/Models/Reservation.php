@@ -8,11 +8,10 @@ class Reservation extends Model
 {
     protected $fillable = [
         'product_id',
-        'first_name',
         'last_name',
+        'first_name',
         'phone',
         'size',
-        'status',
     ];
 
     public function product()
