@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\AdminOnly;
+use App\Http\Controllers\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,23 @@ Route::prefix('admin')
         Route::resource('products', ProductController::class)
             ->except(['show']);
     });
+
+
+
+// Paiement test
+Route::get('/paiement-test', [StripeController::class, 'checkoutTest'])
+    ->name('stripe.test');
+
+// Pages de retour
+Route::get('/paiement/succes', [StripeController::class, 'success'])
+    ->name('stripe.success');
+
+Route::get('/paiement/annule', [StripeController::class, 'cancel'])
+    ->name('stripe.cancel');
+
+
+// sous haute tension
+
+Route::get('/sous-haute-tension', function () {
+    return view('gala.sous-haute-tension');
+})->name('gala.sous-haute-tension');

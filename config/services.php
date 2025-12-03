@@ -41,4 +41,9 @@ return [
         'template_id'  => env('EMAILJS_TEMPLATE_ID'),
     ],
 
+    'stripe' => [
+        'key'    => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ],
+
 ];
