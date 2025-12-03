@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\ServiceProvider;
 
 return [
 
@@ -65,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'Europe/Paris'),
 
     /*
     |--------------------------------------------------------------------------
@@ -122,5 +124,23 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+        |--------------------------------------------------------------------------
+        | Application Service Providers...
+        |--------------------------------------------------------------------------
+        */
+
+        App\Providers\AppServiceProvider::class,
+        // Si tu as d'autres providers custom, tu peux les rajouter ici
+    ])->toArray(),
+
+
+    'aliases' => Facade::defaultAliases()->merge([
+        // 'Example' => App\Facades\Example::class,
+    ])->toArray(),
+
+
 
 ];

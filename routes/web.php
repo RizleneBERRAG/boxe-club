@@ -8,7 +8,10 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Middleware\AdminOnly;
-
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\TicketCheckoutController;
+use App\Http\Controllers\TicketScanController;
+use App\Http\Controllers\TicketCheckinController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,3 +73,38 @@ Route::prefix('admin')
         Route::resource('products', ProductController::class)
             ->except(['show']);
     });
+
+
+
+// Paiement test
+Route::get('/paiement-test', [StripeController::class, 'checkoutTest'])
+    ->name('stripe.test');
+
+// Pages de retour
+Route::get('/paiement/succes', [StripeController::class, 'success'])
+    ->name('stripe.success');
+
+Route::get('/paiement/annule', [StripeController::class, 'cancel'])
+    ->name('stripe.cancel');
+
+
+// sous haute tension
+
+Route::get('/sous-haute-tension', function () {
+    return view('gala.sous-haute-tension');
+})->name('gala.sous-haute-tension');
+
+
+Route::post('/billets/checkout', [TicketCheckoutController::class, 'checkout'])
+    ->name('tickets.checkout');
+
+Route::get('/billets/success', [TicketCheckoutController::class, 'success'])
+    ->name('tickets.success');
+
+Route::get('/billets/cancel', [TicketCheckoutController::class, 'cancel'])
+    ->name('tickets.cancel');
+
+// Vérification d'un billet via son UUID (lien contenu dans le QR code)
+
+Route::get('/billets/verify/{uuid}', [TicketScanController::class, 'verify'])
+    ->name('tickets.verify');
