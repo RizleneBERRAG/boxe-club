@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const target = document.getElementById(id);
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
+                target.scrollIntoView({behavior: "smooth", block: "start"});
             }
         });
     });
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         },
-        { threshold: 0.15 }
+        {threshold: 0.15}
     );
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
@@ -157,4 +157,94 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    /* ------------------------------------------------
+   PANIER BILLETS
+--------------------------------------------------- */
+
+    const prices = {
+        ring: 5000,     // 50 €
+        tribune: 2500,  // 25 €
+        enfant: 1000,   // 10 €
+        vip: 50000      // 500 €
+    };
+
+    const cart = {}; // { ring: 1, tribune: 2, ... }
+
+    const cartInput = document.querySelector('.js-cart-input');
+    const cartCountEl = document.querySelector('.js-cart-count');
+    const cartTotalEl = document.querySelector('.js-cart-total');
+
+    function updateCartDisplay() {
+        // 1) Remettre toutes les quantités visibles à 0
+        document.querySelectorAll('.js-ticket-qty').forEach(span => {
+            span.textContent = '0';
+        });
+
+        // 2) Recalcul du panier réel
+        let totalQty = 0;
+        let totalCents = 0;
+
+        Object.keys(cart).forEach(slug => {
+            const qty = cart[slug] || 0;
+            const price = prices[slug] || 0;
+
+            totalQty += qty;
+            totalCents += qty * price;
+
+            // Mise à jour du compteur associé à ce type de billet
+            const qtySpan = document.querySelector(
+                `.js-ticket-qty[data-ticket="${slug}"]`
+            );
+            if (qtySpan) {
+                qtySpan.textContent = qty;
+            }
+        });
+
+        // 3) Texte "0 billet" / "1 billet" / "2 billets"
+        const label = totalQty <= 1 ? 'billet' : 'billets';
+        if (cartCountEl) {
+            cartCountEl.textContent = `${totalQty} ${label}`;
+        }
+
+        // 4) Total en €
+        if (cartTotalEl) {
+            const euros = (totalCents / 100).toFixed(2).replace('.', ',');
+            cartTotalEl.textContent = `${euros} €`;
+        }
+
+        // 5) Valeur JSON envoyée au backend
+        if (cartInput) {
+            cartInput.value = JSON.stringify(cart);
+        }
+    }
+
+// + ajouter
+    document.querySelectorAll('.js-add-ticket').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const slug = btn.dataset.ticket;
+            if (!slug) return;
+
+            cart[slug] = (cart[slug] || 0) + 1;
+            updateCartDisplay();
+        });
+    });
+
+// – retirer
+    document.querySelectorAll('.js-remove-ticket').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const slug = btn.dataset.ticket;
+            if (!slug) return;
+
+            cart[slug] = (cart[slug] || 0) - 1;
+            if (cart[slug] <= 0) {
+                delete cart[slug];
+            }
+            updateCartDisplay();
+        });
+    });
+
+// init au chargement (panier vide)
+    updateCartDisplay();
+
 });

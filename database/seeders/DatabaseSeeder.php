@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,9 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PlanSeeder::class,
-            // CourseTimeslotSeeder::class, // <-- désactive-le
-            TeamBafountaScheduleSeeder::class, // <-- laisse celui-ci
+            // CourseTimeslotSeeder::class, // <-- désactivé comme demandé
+            TeamBafountaScheduleSeeder::class,
+            TicketTypeSeeder::class, // <-- AJOUT CORRECT
         ]);
     }
-
 }
