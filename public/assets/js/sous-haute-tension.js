@@ -163,8 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
 --------------------------------------------------- */
 
     const prices = {
-        ring: 5000,     // 50 €
-        tribune: 2500,  // 25 €
+        ring: 3000,     // 50 €
+        tribune: 1500,  // 25 €
         enfant: 1000,   // 10 €
         vip: 50000      // 500 €
     };
