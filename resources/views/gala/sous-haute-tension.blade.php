@@ -171,7 +171,7 @@
             <article class="ticket-card ticket-ring reveal tilt">
                 <div class="ticket-tag">Immersion totale</div>
                 <h3>Au bord du ring</h3>
-                <p class="ticket-price">50 €</p>
+                <p class="ticket-price">30 €</p>
                 <p class="ticket-text">Les impacts, l'intensité… à quelques centimètres.</p>
                 <div class="ticket-actions">
                     <button class="btn btn-primary btn-small js-add-ticket" data-ticket="ring">+</button>
@@ -186,7 +186,7 @@
             <article class="ticket-card ticket-tribune reveal tilt">
                 <div class="ticket-tag">Vue globale</div>
                 <h3>Tribune</h3>
-                <p class="ticket-price">25 €</p>
+                <p class="ticket-price">15 €</p>
                 <p class="ticket-text">Une vision parfaite du show et du ring.</p>
                 <div class="ticket-actions">
                     <button class="btn btn-primary btn-small js-add-ticket" data-ticket="tribune">+</button>
@@ -254,11 +254,24 @@
                   action="{{ route('tickets.checkout') }}"
                   class="ticket-cart__form">
                 @csrf
+                <div class="ticket-cart__names">
+                    <div class="input-group">
+                        <label>Prénom</label>
+                        <input type="text" name="first_name" required placeholder="Ton prénom">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Nom</label>
+                        <input type="text" name="last_name" required placeholder="Ton nom">
+                    </div>
+                </div>
+
                 <input type="email"
                        name="email"
                        placeholder="Ton email"
                        required
                        class="ticket-cart__email">
+
                 <input type="hidden" name="cart" class="js-cart-input">
 
                 <button type="submit" class="btn btn-primary btn-small">

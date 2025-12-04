@@ -3,27 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Order extends Model
 {
-    protected $fillable = [
-        'email',
-        'total_cents',
-        'stripe_session_id',
-        'status',
-    ];
+    // IMPORTANT : autoriser tous les champs à être remplis via create()
+    protected $guarded = [];
 
-    public function items()
+    public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);
     }
 
-    // tous les generated_tickets liés via les items
-    public function generatedTickets()
+    public function generatedTickets(): HasManyThrough
     {
-        return $this->hasManyThrough(
-            GeneratedTicket::class,
-            OrderItem::class
-        );
+        return $this->hasManyThrough(GeneratedTicket::class, OrderItem::class);
     }
 }

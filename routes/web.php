@@ -108,3 +108,19 @@ Route::get('/billets/cancel', [TicketCheckoutController::class, 'cancel'])
 
 Route::get('/billets/verify/{uuid}', [TicketScanController::class, 'verify'])
     ->name('tickets.verify');
+
+
+
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/test-mail', function () {
+    Mail::raw('Mail de test Brevo depuis Laravel.', function ($message) {
+        $message->to('espaceecolesportboxe@gmail.com') // par exemple
+        ->subject('Test Brevo / Laravel');
+    });
+
+    return 'OK Laravel : mail envoyé (ou au moins essayé).';
+});
+
+
+

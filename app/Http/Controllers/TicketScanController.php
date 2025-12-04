@@ -37,12 +37,14 @@ class TicketScanController extends Controller
             'scanned_at' => now(),
         ]);
 
-        return $this->respond(
-            $request,
-            'valid',
-            "Billet valide 👍 Entrée autorisée.",
-            $ticket
-        );
+        return response()->json([
+            'status'     => 'valid',
+            'message'    => 'Billet valide 👍 Entrée autorisée.',
+            'scanned_at' => $ticket->scanned_at->toIso8601String(),
+            'holder'     => $ticket->holder_name,
+            'type'       => $ticket->orderItem->ticketType->label ?? $ticket->orderItem->ticketType->name,
+        ]);
+
     }
 
     /**
