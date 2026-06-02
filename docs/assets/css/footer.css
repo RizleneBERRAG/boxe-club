@@ -1,0 +1,410 @@
+/* ===========================
+   FOOTER HERO — Team Bafounta (clean)
+   =========================== */
+:root{
+    --ft-red:#E10600;
+    --ft-red-2:#ff3b2e;
+    --ft-white:#fff;
+    --ft-fg:#ddd;
+    --ft-bg:#0A0A0A;
+    --ft-glass: rgba(255,255,255,.06);
+    --ft-bd: rgba(255,255,255,.10);
+}
+
+/* ---- Conteneur ---- */
+.ft-hero{
+    background:#0b0b0b;
+    border-top:1px solid var(--ft-bd);
+    margin-top:72px;
+    contain: layout paint;
+}
+@supports (content-visibility: auto){
+    .ft-hero{ content-visibility:auto; }
+}
+
+/* ---- Grille principale ---- */
+.ft-hero__grid{
+    max-width:1200px;
+    margin:0 auto;
+    padding:34px 16px 18px;
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap:32px;
+    align-items:start;
+}
+
+/* ---- Réseaux ---- */
+.ft-hero__socials{ display:flex; gap:14px; margin:10px 0 18px; }
+.ft-ico{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:48px; height:48px; border-radius:12px;
+    background:var(--ft-glass);
+    border:1px solid var(--ft-bd);
+    transition:transform .18s ease, box-shadow .2s ease, background .18s ease, border-color .2s ease;
+    color:#fff; overflow:hidden;
+}
+.ft-ico svg{ width:22px; height:22px; fill:#fff; }
+.ft-ico:hover{
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.12);
+    border-color: rgba(255,255,255,.18);
+    box-shadow: 0 6px 22px rgba(225,6,0,.25);
+}
+.ft-ico:focus-visible{
+    outline:2px solid color-mix(in oklab, var(--ft-red) 70%, transparent);
+    outline-offset:2px;
+}
+
+/* ---- Lignes contact (version statique — PAS de soulignement animé) ---- */
+.contact-line{ display:flex; align-items:center; gap:10px; padding:12px 0; }
+
+.contact-line__link{
+    position:relative; display:inline-flex; align-items:center; gap:12px;
+    color:#fff; text-decoration:none;
+    padding:10px 12px 10px 16px;
+    border-radius:12px;
+    background: rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    transition: background .18s ease, border-color .18s ease, transform .12s ease, box-shadow .18s ease;
+}
+/* Accent vertical à gauche */
+.contact-line__link::before{
+    content:""; position:absolute; left:0; top:8px; bottom:8px; width:3px;
+    border-radius:3px; background:linear-gradient(180deg,var(--ft-red),var(--ft-red-2));
+}
+.contact-line__link:hover{
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.16);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.contact-line__link:focus-visible{
+    outline:2px solid color-mix(in oklab, var(--ft-red) 70%, transparent);
+    outline-offset:3px;
+}
+
+/* Icônes contact */
+.contact-line__ico{
+    width:34px; height:34px; display:grid; place-items:center;
+    border-radius:10px; color:#fff;
+    background: rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+}
+.is-tel .contact-line__ico{ color:#ff6b87; }
+.is-mail .contact-line__ico{ color:#9ad1ff; }
+
+.contact-line__value{
+    font-weight:900; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* ---- Colonne droite (logo + halo + float) ---- */
+.ft-hero__right{
+    position:relative; display:flex; align-items:flex-start; justify-content:center; padding-top:64px;
+}
+.ft-hero__right img{
+    display:block; max-width: min(36vw, 520px);
+    filter: drop-shadow(0 14px 50px rgba(225,6,0,.22));
+    transform: translateZ(0);
+    transition: transform .25s ease, filter .25s ease;
+}
+.ft-hero__right::before{
+    content:""; position:absolute; inset:auto 0 12px 0; height:140px; margin:auto;
+    width:min(38vw, 560px);
+    background: radial-gradient(40% 60% at 50% 50%, rgba(225,6,0,.22), transparent 70%);
+    filter: blur(18px); pointer-events:none;
+}
+@media (prefers-reduced-motion:no-preference){
+    .ft-hero__right img{ animation: ft-float 7.2s ease-in-out infinite; }
+}
+@keyframes ft-float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(6px) } }
+.ft-hero__right:hover img{
+    filter: drop-shadow(0 18px 60px rgba(255,59,48,.28));
+    transform: translateY(2px) scale(1.008);
+}
+
+/* ---- Bas du footer ---- */
+.ft-hero__bottom{
+    border-top:2px solid rgba(255,255,255,.06);
+    margin-top:28px; padding:16px 16px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; max-width:1200px; margin-left:auto; margin-right:auto;
+    color:#aaa; font-size:15px;
+}
+.ft-hero__legal a{ color:#fff; font-weight:800; text-decoration:none; position:relative; }
+.ft-hero__legal a::after{
+    content:""; position:absolute; left:0; right:0; bottom:-6px; height:4px; border-radius:999px;
+    background:linear-gradient(90deg, var(--ft-red), var(--ft-red-2));
+    transform: scaleX(.2); transform-origin:left; transition: transform .22s ease;
+}
+.ft-hero__legal a:hover::after{ transform: scaleX(1); }
+.ft-hero__legal a:focus-visible{
+    outline:2px solid color-mix(in oklab, var(--ft-red) 70%, transparent);
+    outline-offset:3px;
+}
+
+/* ---- Ghost title + tag ---- */
+.ft-ghost{
+    position:relative; margin:0 0 8px; color:#fff;
+    font-weight:1000; letter-spacing:-.01em;
+    font-size:clamp(38px,6.2vw,84px); line-height:.98;
+}
+.ft-ghost::before{
+    content:"TB"; position:absolute; inset:auto 0 100% 0; transform:translateY(40%);
+    font-size:clamp(120px,18vw,220px); line-height:1; font-weight:1000; letter-spacing:-.04em;
+    color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.08); text-stroke:1px rgba(255,255,255,.08);
+}
+@supports not (-webkit-text-stroke: 1px #000){
+    .ft-ghost::before{ color:rgba(255,255,255,.05); }
+}
+.ft-ghost__tag{ margin:0 0 18px; color:#d9d9d9; font-size:clamp(14px,2vw,16px); }
+
+/* ---- Head spacing + CTA ---- */
+.ft-head{ margin: 8px 0 16px; }
+.ft-cta{ display:flex; gap:10px; flex-wrap:wrap; margin: 6px 0 10px; }
+.ft-cta .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    border-radius:12px; padding:12px 16px; font-weight:800;
+    border:1px solid rgba(255,255,255,.14); text-decoration:none;
+    transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.ft-cta .btn-primary{
+    background:var(--ft-red); color:#fff; border-color:rgba(255,255,255,.06);
+    box-shadow:0 12px 28px rgba(225,6,0,.28);
+}
+.ft-cta .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 16px 36px rgba(255,59,48,.35); }
+.ft-cta .btn-ghost{ color:#fff; background:rgba(255,255,255,.06); }
+.ft-cta .btn-ghost:hover{ transform:translateY(-1px); background:rgba(255,255,255,.1); }
+.ft-cta .btn:focus-visible{
+    outline:2px solid color-mix(in oklab, var(--ft-red) 70%, transparent);
+    outline-offset:3px;
+}
+
+/* ---- Adresse ---- */
+.ft-hero__addr{ display:block; margin: 14px 0 10px; color:#cfcfcf; }
+
+/* ---- Liens utiles ---- */
+.ft-links{
+    display:flex; flex-wrap:wrap; gap:12px 18px; margin-top:10px;
+}
+.ft-links a{
+    color:#e5e5e5; font-weight:800; text-decoration:none;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    padding:8px 12px; border-radius:10px;
+    transition: background .18s ease, border-color .18s ease, transform .12s ease;
+}
+.ft-links a:hover{
+    background: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.18);
+    transform: translateY(-1px);
+}
+.ft-links a:focus-visible{
+    outline:2px solid color-mix(in oklab, var(--ft-red) 70%, transparent);
+    outline-offset:3px;
+}
+
+/* ---- Apparition du footer ---- */
+.ft{ opacity:0; transform: translateY(40px); transition: opacity .6s ease, transform .6s ease; }
+.ft.is-visible{ opacity:1; transform: none; }
+
+/* ---- Ripple (icônes) ---- */
+.ripple{
+    position:absolute; border-radius:50%; background: rgba(255,255,255,.25);
+    transform: scale(0); pointer-events:none; animation: rippleAnim .6s ease-out forwards;
+}
+@keyframes rippleAnim{ to{ transform: scale(2); opacity:0 } }
+.touched{ filter: brightness(1.3); transform: scale(.96); }
+
+/* ---- Responsive ---- */
+@media (max-width:980px){
+    .ft-hero__grid{ grid-template-columns:1fr; gap:24px; }
+    .ft-hero__right{ align-items:center; padding-top:0; }
+    .ft-hero__right img{ max-width:min(68vw, 420px); }
+}
+@media (max-width:640px){
+    .contact-line{ gap:8px; }
+    .contact-line__ico{ width:28px; height:28px; border-radius:8px; }
+}
+@media (prefers-reduced-motion:reduce){
+    .ft *, .ft *::before, .ft *::after{ animation:none !important; transition:none !important; }
+}
+/* Evite les effets “hover” sur mobile */
+@media (hover: none){
+    .ft-ico:hover,
+    .contact-line__link:hover { transform:none; box-shadow:none; }
+}
+
+/* Tap highlight (mobile) */
+.ft-hero a { -webkit-tap-highlight-color: transparent; }
+
+/* Fallback focus si color-mix non supporté */
+@supports not (color: color-mix(in oklab, red 50%, white 50%)){
+    .ft-ico:focus-visible,
+    .contact-line__link:focus-visible,
+    .ft-cta .btn:focus-visible,
+    .ft-hero__legal a:focus-visible,
+    .ft-links a:focus-visible { outline:2px solid #E10600; }
+}
+
+/* ===== Réseaux sociaux – ronds + vraies couleurs au hover ===== */
+.ft-hero__socials{
+    display:flex;
+    gap:12px;
+    margin:18px 0;
+}
+
+.ft-ico{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    border-radius:999px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.16);
+    color:#f5f5f5;
+    overflow:hidden;
+    transition:
+        transform .18s ease,
+        box-shadow .22s ease,
+        background .18s ease,
+        border-color .18s ease,
+        color .18s ease;
+}
+
+.ft-ico svg{
+    width:22px;
+    height:22px;
+    fill:currentColor; /* important pour que la couleur suive le hover */
+}
+
+.ft-ico--fb:hover{ color:#1877f2; }
+.ft-ico--ig:hover{ color:#E4405F; }
+.ft-ico--tt:hover{ color:#000; } /* ou #69C9D0 si tu veux le bleu TikTok */
+
+
+/* Hover générique */
+.ft-ico:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+/* Facebook */
+.ft-ico--fb:hover{
+    background:#1877F2;
+    border-color:#1877F2;
+    color:#fff;
+}
+
+/* Instagram (dégradé IG) */
+.ft-ico--ig:hover{
+    background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);
+    border-color:transparent;
+    color:#fff;
+}
+
+/* TikTok */
+.ft-ico--tt:hover{
+    background:#000;
+    border-color:#25F4EE;
+    color:#fff;
+    box-shadow:0 0 14px rgba(37,244,238,.55);
+}
+
+
+/* ===== Téléphone / mail – plus de gros cadre, juste icône + texte ===== */
+.contact-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:6px 0;
+}
+
+.contact-line__link{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+    text-decoration:none;
+    background:none;
+    border:none;
+    padding:0;
+}
+
+.contact-line__link::before{
+    content:none; /* on enlève la grande barre verticale */
+}
+
+.contact-line__ico{
+    width:32px;
+    height:32px;
+    display:grid;
+    place-items:center;
+    border-radius:999px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.16);
+    transition:background .18s ease, border-color .18s ease, transform .15s ease;
+}
+
+.is-tel .contact-line__ico{ color:#ff6b87; }
+.is-mail .contact-line__ico{ color:#9ad1ff; }
+
+.contact-line__link:hover .contact-line__ico{
+    background:rgba(255,255,255,.12);
+    border-color:rgba(255,255,255,.24);
+    transform:translateY(-1px);
+}
+
+.contact-line__value{
+    font-weight:800;
+    letter-spacing:.2px;
+}
+
+
+/* ===== Liens vers les autres pages – plus de gros boutons ===== */
+.ft-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:16px;
+}
+
+.ft-links a{
+    position:relative;
+    padding:0;
+    background:none;
+    border:none;
+    color:#e5e5e5;
+    font-weight:800;
+    text-decoration:none;
+}
+
+.ft-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    height:2px;
+    width:0;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--ft-red),var(--ft-red-2));
+    transition:width .22s ease;
+}
+
+.ft-links a:hover::after{
+    width:100%;
+}
+
+.contact-line__ico svg{
+    width:18px;
+    height:18px;
+}
+
+.ft-head{
+    margin-top: 32px; /* par ex. */
+}
+
+.ft-hero__left {
+    padding-top: 40px; /* ou la valeur qui te donne le même rendu */
+}

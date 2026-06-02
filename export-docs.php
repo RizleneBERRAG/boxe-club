@@ -1,6 +1,7 @@
 <?php
 
 $base = 'http://127.0.0.1:8000';
+$repoBase = '/boxe-club';
 
 $pages = [
     '/' => 'docs/index.html',
@@ -20,6 +21,19 @@ foreach ($pages as $url => $path) {
         echo "Erreur : $url\n";
         continue;
     }
+
+    // Corrige les chemins absolus Laravel pour GitHub Pages
+    $html = str_replace('href="/assets/', 'href="' . $repoBase . '/assets/', $html);
+    $html = str_replace('src="/assets/', 'src="' . $repoBase . '/assets/', $html);
+    $html = str_replace('href="/storage/', 'href="' . $repoBase . '/storage/', $html);
+    $html = str_replace('src="/storage/', 'src="' . $repoBase . '/storage/', $html);
+
+    // Corrige les liens internes
+    $html = str_replace('href="/le-club"', 'href="' . $repoBase . '/le-club/"', $html);
+    $html = str_replace('href="/cours-horaires"', 'href="' . $repoBase . '/cours-horaires/"', $html);
+    $html = str_replace('href="/tarifs"', 'href="' . $repoBase . '/tarifs/"', $html);
+    $html = str_replace('href="/contact"', 'href="' . $repoBase . '/contact/"', $html);
+    $html = str_replace('href="/"', 'href="' . $repoBase . '/"', $html);
 
     $fullPath = __DIR__ . '/' . $path;
     @mkdir(dirname($fullPath), 0777, true);
