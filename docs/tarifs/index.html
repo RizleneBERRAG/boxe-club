@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team Bafounta</title>
+
+    
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/global.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/header.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/footer.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/home.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/club.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/courses.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/pricing.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/contact.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/boutique.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/admin.css">
+
+        <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/pricing.css">
+
+    <script src="http://127.0.0.1:8000/assets/js/header.js" defer></script>
+
+    
+    <script>
+        (function () {
+            try {
+                const saved = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const initial = saved || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', initial);
+            } catch(e){}
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="hdr-min" role="banner">
+    
+    <button
+        class="hdr-menu-open"
+        type="button"
+        data-hdr-menu-open
+        aria-haspopup="dialog"
+        aria-controls="hdrMenu"
+        aria-expanded="false"
+        aria-label="Ouvrir le menu"
+    >
+        <span></span><span></span><span></span>
+    </button>
+
+    
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/header.css?v=10">
+
+    
+    <a href="http://127.0.0.1:8000" class="brand-center" aria-label="Accueil Team Bafounta">
+        <img src="http://127.0.0.1:8000/assets/img/logo.png" alt="Team Bafounta" />
+    </a>
+
+    
+    <div class="right-actions">
+        <a href="http://127.0.0.1:8000/contact" class="top-link">Contact</a>
+        <a href="http://127.0.0.1:8000/inscription" class="btn cta">S’inscrire</a>
+    </div>
+</header>
+
+
+<div class="hdr-menu-backdrop" data-hdr-menu-backdrop hidden></div>
+
+
+<div
+    id="hdrMenu"
+    class="hdr-menu-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="hdrMenuTitle"
+    hidden
+    data-hdr-menu
+    tabindex="-1"
+>
+    <button class="hdr-menu-close" type="button" aria-label="Fermer le menu" data-hdr-menu-close>✕</button>
+    <div class="hdr-menu-grid">
+        
+        <div class="hdr-menu-left">
+            <h2 id="hdrMenuTitle" class="hdr-menu-title">Team Bafounta</h2>
+                        <ul class="menu" role="menu">
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/le-club">
+                            <span class="menu__label">Le Club</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/cours-horaires">
+                            <span class="menu__label">Cours &amp; Horaires</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item is-active" role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/tarifs">
+                            <span class="menu__label">Tarifs</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/actualites">
+                            <span class="menu__label">Actualités</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/boutique">
+                            <span class="menu__label">Boutique</span>
+                        </a>
+                    </li>
+                            </ul>
+
+            <div class="hdr-side-actions">
+                
+                <a href="http://127.0.0.1:8000/inscription" class="hdr-side-cta">
+                    Rejoindre la Team
+                </a>
+
+                
+                <div class="hdr-side-contact">
+                    <a class="hdr-side-pill" href="tel:0636132175">
+                        <span class="hdr-side-pill__ico">📞</span>
+                        <span class="hdr-side-pill__txt">06 36 13 21 75</span>
+                    </a>
+
+                    <a class="hdr-side-pill" href="mailto:espaceecolesportboxe@gmail.com">
+                        <span class="hdr-side-pill__ico">✉️</span>
+                        <span class="hdr-side-pill__txt">espaceecolesportboxe@gmail.com</span>
+                    </a>
+                </div>
+
+                
+                <div class="hdr-side-social">
+                    <a class="hdr-side-icon" href="https://www.instagram.com/teambafounta/" target="_blank" rel="noopener"
+                       aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10Zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8Zm4.9-8.9a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z"/></svg>
+                    </a>
+
+                    <a class="hdr-side-icon ico--fb" href="https://facebook.com" target="_blank" rel="noopener"
+                       aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2H10a5 5 0 0 0-5 5v3H3v4h2v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3.5V2Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="hdr-menu-right">
+            <img src="http://127.0.0.1:8000/assets/img/menu2.jpg" alt="">
+            <img src="http://127.0.0.1:8000/assets/img/menu1.png" alt="">
+            <img src="http://127.0.0.1:8000/assets/img/jeremyboxe.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+
+<script src="http://127.0.0.1:8000/assets/js/header-menu.js?v=3" defer></script>
+
+
+<main id="main" class="container">
+    
+    
+    <section class="section pricing-page">
+        <br>
+        
+
+        <header class="pricing-hero hero-with-video">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="/assets/video/video.mp4" type="video/mp4">
+            </video>
+
+            <div class="hero-overlay"></div>
+
+            <p class="pricing-hero__eyebrow">Team Bafounta — Saison 2025/2026</p>
+            <h1 class="pricing-hero__title">Tarifs & adhésions</h1>
+
+            <p class="pricing-hero__subtitle">
+                Des formules pensées pour progresser à ton rythme, en sécurité et en confiance.
+            </p>
+
+            <div class="pricing-hero__chips">
+                <span class="pricing-chip">Encadrement diplômé</span>
+                <span class="pricing-chip">Ambiance familiale</span>
+                <span class="pricing-chip">Objectifs loisirs & compétition</span>
+            </div>
+        </header>
+
+        
+        <section class="try-banner card">
+            <div class="try-banner__left">
+                <span class="try-banner__pill">Cours d’essai</span>
+                <p class="try-banner__intro">
+                    Viens tester la salle et les coachs sur une séance complète,
+                    sans t’engager tout de suite.
+                </p>
+            </div>
+
+            <div class="try-banner__center">
+                <div class="try-banner__col">
+                    <span class="try-banner__label">Éducative</span>
+                    <span class="try-banner__price">30 €</span>
+                </div>
+                <div class="try-banner__col">
+                    <span class="try-banner__label">Amateur</span>
+                    <span class="try-banner__price">50 €</span>
+                </div>
+                <p class="try-banner__note">
+                    Montant intégralement déduit de ta formule si tu t’inscris.
+                </p>
+            </div>
+
+            <div class="try-banner__right">
+                <a href="http://127.0.0.1:8000/contact" class="btn btn-primary try-banner__btn">
+                    Réserver une séance d’essai
+                </a>
+            </div>
+        </section>
+
+
+        
+                    <section class="plans-section">
+                <h2 class="plans-title">Formules d’adhésion</h2>
+                <p class="plans-subtitle">
+                    Chaque formule inclut l’accès aux cours du planning correspondant, l’encadrement
+                    par l’équipe et l’intégration à la vie du club.
+                </p>
+
+                <div class="pricing-grid">
+                                            
+                        <article class="price-card card " data-reveal>
+                            
+                            <h3 class="price-card__title">Baby Boxe Initiation (5–9 ans)</h3>
+
+                            <div class="price-card__row">
+                                <span class="price-card__currency">€</span>
+                                <span class="price-card__amount">
+                                    300.00
+                                </span>
+                                <span class="price-card__period">/ saison</span>
+                            </div>
+
+                            
+                                                            <p class="price-card__desc">(assurance comprise) — Apprentissage ludique et sécurisé, coordination &amp; confiance.</p>
+                            
+                            <ul class="price-card__list">
+                                <li>Accès aux cours de ta catégorie</li>
+                                <li>Encadrement et corrections pendant les séances</li>
+                                <li>Licence & assurance adaptées à ta pratique</li>
+                            </ul>
+
+                            <a class="btn btn-primary price-card__btn" href="http://127.0.0.1:8000/inscription">
+                                Choisir cette formule
+                            </a>
+                        </article>
+                                            
+                        <article class="price-card card " data-reveal>
+                            
+                            <h3 class="price-card__title">Boxe éducative</h3>
+
+                            <div class="price-card__row">
+                                <span class="price-card__currency">€</span>
+                                <span class="price-card__amount">
+                                    350.00
+                                </span>
+                                <span class="price-card__period">/ saison</span>
+                            </div>
+
+                            
+                                                            <p class="price-card__desc">(assurance comprise)</p>
+                            
+                            <ul class="price-card__list">
+                                <li>Accès aux cours de ta catégorie</li>
+                                <li>Encadrement et corrections pendant les séances</li>
+                                <li>Licence & assurance adaptées à ta pratique</li>
+                            </ul>
+
+                            <a class="btn btn-primary price-card__btn" href="http://127.0.0.1:8000/inscription">
+                                Choisir cette formule
+                            </a>
+                        </article>
+                                            
+                        <article class="price-card card " data-reveal>
+                            
+                            <h3 class="price-card__title">Aéro Boxe</h3>
+
+                            <div class="price-card__row">
+                                <span class="price-card__currency">€</span>
+                                <span class="price-card__amount">
+                                    350.00
+                                </span>
+                                <span class="price-card__period">/ saison</span>
+                            </div>
+
+                            
+                                                            <p class="price-card__desc">(assurance comprise)</p>
+                            
+                            <ul class="price-card__list">
+                                <li>Accès aux cours de ta catégorie</li>
+                                <li>Encadrement et corrections pendant les séances</li>
+                                <li>Licence & assurance adaptées à ta pratique</li>
+                            </ul>
+
+                            <a class="btn btn-primary price-card__btn" href="http://127.0.0.1:8000/inscription">
+                                Choisir cette formule
+                            </a>
+                        </article>
+                                            
+                        <article class="price-card card " data-reveal>
+                            
+                            <h3 class="price-card__title">Boxe loisir</h3>
+
+                            <div class="price-card__row">
+                                <span class="price-card__currency">€</span>
+                                <span class="price-card__amount">
+                                    380.00
+                                </span>
+                                <span class="price-card__period">/ saison</span>
+                            </div>
+
+                                                            <p class="price-card__split">
+                                    ou en 2× <strong>190,00 €</strong>
+                                </p>
+                            
+                                                            <p class="price-card__desc">(assurance comprise)</p>
+                            
+                            <ul class="price-card__list">
+                                <li>Accès aux cours de ta catégorie</li>
+                                <li>Encadrement et corrections pendant les séances</li>
+                                <li>Licence & assurance adaptées à ta pratique</li>
+                            </ul>
+
+                            <a class="btn btn-primary price-card__btn" href="http://127.0.0.1:8000/inscription">
+                                Choisir cette formule
+                            </a>
+                        </article>
+                                            
+                        <article class="price-card card is-featured" data-reveal>
+                                                            <div class="badge">Le plus choisi</div>
+                            
+                            <h3 class="price-card__title">Boxe amateur</h3>
+
+                            <div class="price-card__row">
+                                <span class="price-card__currency">€</span>
+                                <span class="price-card__amount">
+                                    630.00
+                                </span>
+                                <span class="price-card__period">/ saison</span>
+                            </div>
+
+                                                            <p class="price-card__split">
+                                    ou en 2× <strong>315,00 €</strong>
+                                </p>
+                            
+                                                            <p class="price-card__desc">(assurance comprise) — inclut 50 € salle de musculation (obligatoire)</p>
+                            
+                            <ul class="price-card__list">
+                                <li>Accès aux cours de ta catégorie</li>
+                                <li>Encadrement et corrections pendant les séances</li>
+                                <li>Licence & assurance adaptées à ta pratique</li>
+                            </ul>
+
+                            <a class="btn btn-primary price-card__btn" href="http://127.0.0.1:8000/inscription">
+                                Choisir cette formule
+                            </a>
+                        </article>
+                    
+                    
+                        
+                        
+                        <div class="pricing-logo-free" aria-hidden="true" data-reveal>
+                            <img src="http://127.0.0.1:8000/assets/img/logo.png" alt="Team Bafounta">
+                        </div>
+
+
+
+                </div>
+
+                <br>
+                <br>
+
+                
+                <div class="includes-strip card">
+                    <p class="includes-strip__title">Avec toutes les formules :</p>
+                    <div class="includes-strip__items">
+                        <div class="includes-strip__item">
+                            <span class="includes-strip__icon">🥊</span>
+                            <span>Travail technique, sac, paos & mise de gants encadrée.</span>
+                        </div>
+                        <div class="includes-strip__item">
+                            <span class="includes-strip__icon">🤝</span>
+                            <span>Esprit club, événements, galas et déplacements.</span>
+                        </div>
+                        <div class="includes-strip__item">
+                            <span class="includes-strip__icon">🧠</span>
+                            <span>Respect, confiance, progression à ton rythme.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        
+        <section class="extra-section">
+
+            <div class="info-row">
+                <article class="info-block card">
+                    <h2 class="info-title">Équipement obligatoire</h2>
+                    <p class="info-text">
+                        Pour boxer en sécurité, un pack complet est nécessaire. Le club t’accompagne
+                        pour choisir les bonnes tailles et le matériel adapté à ton niveau.
+                    </p>
+                    <ul class="info-list">
+                        <li>
+                            <strong>Pack complets nouveaux adhérents</strong> :
+                            150 € (boxe éducative) • 200 € (boxe amateur)
+                        </li>
+                        <li>
+                            <strong>Tenue seule</strong> :
+                            60 € (éducative) • 90 € (amateur)
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="info-block card">
+                    <h2 class="info-title">Assurance & déplacements</h2>
+                    <p class="info-text">
+                        Pour les compétiteurs, le club organise les déplacements officiels et
+                        sécurise les trajets avec une assurance adaptée.
+                    </p>
+                    <ul class="info-list">
+                        <li>Région lyonnaise : 12 €</li>
+                        <li>Hors région ≤ 150 km : 30 €</li>
+                        <li>> 150 km : 50 €</li>
+                    </ul>
+                    <p class="info-text info-text--small">
+                        Assurance annuelle compétition&nbsp;: <strong>90 €</strong>
+                    </p>
+                </article>
+            </div>
+
+            <div class="info-row info-row--bottom">
+                <article class="info-block card info-block--accent">
+                    <h2 class="info-title">Baby Boxe (5–9 ans)</h2>
+                    <p class="info-text">
+                        La Baby Boxe Initiation anglaise apprend les bases de la boxe
+                        de manière ludique&nbsp;: coordination, garde, déplacements,
+                        respect et confiance en soi.
+                    </p>
+                    <p class="info-text info-text--small">
+                        Les séances sont encadrées, adaptées à l’âge, sans recherche de KO
+                        ni mises en danger.
+                    </p>
+                </article>
+
+                <article class="info-block card">
+                    <h2 class="info-title">Perfectionnement & coaching</h2>
+                    <ul class="info-list">
+                        <li>
+                            Cours de perfectionnement compétiteurs (sur demande) :
+                            <strong>30 €</strong> la semaine
+                        </li>
+                        <li>
+                            Coaching personnalisé (lun→ven, 10h–12h) :
+                            <strong>50 €</strong> la semaine
+                        </li>
+                    </ul>
+                    <p class="info-text info-text--small">
+                        Idéal pour préparer un combat, travailler un point technique
+                        ou reprendre confiance après une coupure.
+                    </p>
+                </article>
+            </div>
+
+            <div class="info-row info-row--full">
+                <article class="info-faq card">
+                    <h2 class="info-title">Questions fréquentes</h2>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3>Puis-je payer en plusieurs fois ?</h3>
+                            <p>
+                                Oui, les formules indiquées “2×” peuvent être réglées en deux chèques
+                                encaissés au cours de la saison. On voit ça ensemble lors de l’inscription.
+                            </p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Que se passe-t-il après le cours d’essai ?</h3>
+                            <p>
+                                Si tu t’inscris, le montant du cours d’essai est déduit de ta formule.
+                                Sinon, tu ne dois rien de plus.
+                            </p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Faut-il un certificat médical ?</h3>
+                            <p>
+                                Oui, un certificat médical de non contre-indication à la pratique de la boxe
+                                est demandé, et obligatoire.
+                            </p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Je ne sais pas quelle formule choisir…</h3>
+                            <p>
+                                Viens sur un cours d’essai, discute avec les coachs et on t’oriente vers la
+                                formule la plus adaptée à ton niveau et tes objectifs.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </section>
+</main>
+
+<footer class="ft-hero ft" role="contentinfo" aria-labelledby="ft-title">
+    <div class="ft-hero__grid">
+
+        <!-- Colonne gauche -->
+        <div class="ft-hero__left">
+            <header class="ft-head">
+                <h2 class="ft-ghost" id="ft-title">Team Bafounta</h2>
+                <p class="ft-ghost__tag">ESPACE ECOLE SPORT BOXE</p>
+
+                <div class="ft-cta">
+                    <a href="http://127.0.0.1:8000/inscription" class="btn btn-primary">S’inscrire</a>
+                    <a href="http://127.0.0.1:8000/cours-horaires" class="btn btn-ghost">Voir les horaires</a>
+                </div>
+            </header>
+
+            <div class="ft-hero__socials">
+                <!-- Facebook -->
+                <a class="ft-ico ft-ico--fb" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M13.5 21V12.7h2.8l.4-3h-3.2V7.3c0-.9.3-1.5 1.6-1.5h1.8V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.3v2.3H7.8v3h2.6V21h3.1Z"/>
+                    </svg>
+                </a>
+
+                <!-- Instagram -->
+                <a class="ft-ico ft-ico--ig"
+                   href="https://instagram.com"
+                   target="_blank"
+                   rel="noopener"
+                   aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.25-4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 5.5z"/>
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a class="ft-ico ft-ico--tt" href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M16.5 3.1c.3 1.5 1.3 2.8 2.8 3.3.5.2 1 .3 1.5.3v3.2c-1.6-.1-3.2-.6-4.6-1.6V16c0 3.5-2.8 6.3-6.3 6.3A6.3 6.3 0 0 1 3.7 13.7C3.7 10.2 6.5 7.4 10 7.4c.5 0 1 .1 1.5.2v3.3c-.5-.3-1-.4-1.5-.4a3 3 0 1 0 3 3V3h3.5Z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Téléphone -->
+            <div class="contact-line contact-line--static">
+                <a class="contact-line__link is-tel" href="tel:0636132175">
+                    <span class="contact-line__ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"
+                             fill="none" stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6.5 3h3a1 1 0 0 1 1 .8l.7 3.7a1 1 0 0 1-.5 1.1l-1.6 1
+                                     a11.5 11.5 0 0 0 5.3 5.3l1-1.6a1 1 0 0 1 1.1-.5l3.7.7a1 1 0 0 1 .8 1v3
+                                     a1 1 0 0 1-1 1H18C10.8 22 5 16.2 5 9V4a1 1 0 0 1 1-1Z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-line__value">06 36 13 21 75</span>
+                </a>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-line contact-line--static">
+                <a class="contact-line__link is-mail" href="mailto:espaceecolesportboxe@gmail.com">
+                    <span class="contact-line__ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"
+                             fill="none" stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                            <path d="M5 7l7 5 7-5"></path>
+                        </svg>
+                    </span>
+                    <span class="contact-line__value">EspaceEcoleSportBoxe@gmail.com</span>
+                </a>
+            </div>
+
+            <address class="ft-hero__addr">
+                Jacques Brel — 7 Av. d’Oschatz · Jean Guimier — Av. Jules Guesde
+            </address>
+
+            <nav class="ft-links" aria-label="Liens utiles du site">
+                <a href="http://127.0.0.1:8000/le-club">Le club</a>
+                <a href="http://127.0.0.1:8000/cours-horaires">Horaires</a>
+                <a href="http://127.0.0.1:8000/inscription">Inscription</a>
+                <a href="http://127.0.0.1:8000/actualites">Actualités</a>
+            </nav>
+        </div>
+
+        <!-- Colonne droite (logo) -->
+        <div class="ft-hero__right">
+            <img src="http://127.0.0.1:8000/assets/img/logo.png" alt="Team Bafounta" class="ft-hero__logo">
+        </div>
+
+    </div>
+
+    <div class="ft-hero__bottom">
+        <p class="ft-hero__copy">© 2026 Team Bafounta — Tous droits réservés</p>
+        <p class="ft-hero__legal">
+            <a href="http://127.0.0.1:8000/assets/docs/mentions-legales-rgpd.pdf" download>Mentions légales & RGPD</a>
+        </p>
+    </div>
+
+    <script src="http://127.0.0.1:8000/assets/js/footer.js?v=1" defer></script>
+</footer>
+
+    <script src="http://127.0.0.1:8000/assets/js/pricing.js" defer></script>
+
+<script src="http://127.0.0.1:8000/assets/js/theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team Bafounta</title>
+
+    
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/global.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/header.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/footer.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/home.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/club.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/courses.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/pricing.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/contact.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/boutique.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/admin.css">
+
+        <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/global.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/home.css?v=2">
+
+    <script src="http://127.0.0.1:8000/assets/js/header.js" defer></script>
+
+    
+    <script>
+        (function () {
+            try {
+                const saved = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const initial = saved || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', initial);
+            } catch(e){}
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="hdr-min" role="banner">
+    
+    <button
+        class="hdr-menu-open"
+        type="button"
+        data-hdr-menu-open
+        aria-haspopup="dialog"
+        aria-controls="hdrMenu"
+        aria-expanded="false"
+        aria-label="Ouvrir le menu"
+    >
+        <span></span><span></span><span></span>
+    </button>
+
+    
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/header.css?v=10">
+
+    
+    <a href="http://127.0.0.1:8000" class="brand-center" aria-label="Accueil Team Bafounta">
+        <img src="http://127.0.0.1:8000/assets/img/logo.png" alt="Team Bafounta" />
+    </a>
+
+    
+    <div class="right-actions">
+        <a href="http://127.0.0.1:8000/contact" class="top-link">Contact</a>
+        <a href="http://127.0.0.1:8000/inscription" class="btn cta">S’inscrire</a>
+    </div>
+</header>
+
+
+<div class="hdr-menu-backdrop" data-hdr-menu-backdrop hidden></div>
+
+
+<div
+    id="hdrMenu"
+    class="hdr-menu-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="hdrMenuTitle"
+    hidden
+    data-hdr-menu
+    tabindex="-1"
+>
+    <button class="hdr-menu-close" type="button" aria-label="Fermer le menu" data-hdr-menu-close>✕</button>
+    <div class="hdr-menu-grid">
+        
+        <div class="hdr-menu-left">
+            <h2 id="hdrMenuTitle" class="hdr-menu-title">Team Bafounta</h2>
+                        <ul class="menu" role="menu">
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/le-club">
+                            <span class="menu__label">Le Club</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/cours-horaires">
+                            <span class="menu__label">Cours &amp; Horaires</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/tarifs">
+                            <span class="menu__label">Tarifs</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/actualites">
+                            <span class="menu__label">Actualités</span>
+                        </a>
+                    </li>
+                                                        <li class="menu__item " role="none">
+                        <a class="menu__link" role="menuitem" href="http://127.0.0.1:8000/boutique">
+                            <span class="menu__label">Boutique</span>
+                        </a>
+                    </li>
+                            </ul>
+
+            <div class="hdr-side-actions">
+                
+                <a href="http://127.0.0.1:8000/inscription" class="hdr-side-cta">
+                    Rejoindre la Team
+                </a>
+
+                
+                <div class="hdr-side-contact">
+                    <a class="hdr-side-pill" href="tel:0636132175">
+                        <span class="hdr-side-pill__ico">📞</span>
+                        <span class="hdr-side-pill__txt">06 36 13 21 75</span>
+                    </a>
+
+                    <a class="hdr-side-pill" href="mailto:espaceecolesportboxe@gmail.com">
+                        <span class="hdr-side-pill__ico">✉️</span>
+                        <span class="hdr-side-pill__txt">espaceecolesportboxe@gmail.com</span>
+                    </a>
+                </div>
+
+                
+                <div class="hdr-side-social">
+                    <a class="hdr-side-icon" href="https://www.instagram.com/teambafounta/" target="_blank" rel="noopener"
+                       aria-label="Instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10Zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8Zm4.9-8.9a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z"/></svg>
+                    </a>
+
+                    <a class="hdr-side-icon ico--fb" href="https://facebook.com" target="_blank" rel="noopener"
+                       aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2H10a5 5 0 0 0-5 5v3H3v4h2v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3.5V2Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="hdr-menu-right">
+            <img src="http://127.0.0.1:8000/assets/img/menu2.jpg" alt="">
+            <img src="http://127.0.0.1:8000/assets/img/menu1.png" alt="">
+            <img src="http://127.0.0.1:8000/assets/img/jeremyboxe.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+
+<script src="http://127.0.0.1:8000/assets/js/header-menu.js?v=3" defer></script>
+
+
+<main id="main" class="container">
+        
+    <section class="hero-vid full-bleed full-bleed--nopad" aria-label="Présentation Team Bafounta">
+        <div class="hero-vid__media" aria-hidden="true">
+            <video id="heroVideo" class="hero-vid__video"
+                   autoplay muted loop playsinline preload="metadata"
+                   poster="http://127.0.0.1:8000/assets/img/rayanayoub.jpeg">
+                
+                <source src="http://127.0.0.1:8000/assets/video/hero.webm" type="video/webm">
+                <source src="http://127.0.0.1:8000/assets/video/video.mp4" type="video/mp4">
+            </video>
+
+            <img class="hero-vid__fallback" src="http://127.0.0.1:8000/assets/img/rayanayoub.jpeg" alt="">
+            <span class="hero-vid__overlay"></span>
+            <span class="hero-vid__vignette"></span>
+        </div>
+
+        <div class="hero-vid__inner">
+            <p class="hero-vid__kicker">Espace Ecole Sport Boxe</p>
+            <h1 class="hero-vid__title">L’esprit <span class="accent">Team Bafounta</span></h1>
+            <p class="hero-vid__lead">Ici, on tombe, on souffre, on se relève. <br>Parce que chaque coup nous rend plus fort, chaque entraînement nous rapproche de notre meilleure version. <br>Ici, on est une famille qui frappe fort.</p>
+            <div class="hero-vid__actions">
+                <a href="http://127.0.0.1:8000/inscription" class="btn-primary btn-wide">Rejoindre la Team</a>
+                <a href="http://127.0.0.1:8000/cours-horaires" class="btn btn-ghost">Voir les horaires</a>
+            </div>
+            <ul class="hero-vid__badges" role="list">
+                <li>Jamais seul. Jamais faible</li>
+                <li>Courage. Respect. Combat</li>
+                <li>Esprit guerrier</li>
+            </ul>
+        </div>
+
+        <div class="hero-vid__scroll" aria-hidden="true">
+            <span>Faire défiler</span><i></i>
+        </div>
+    </section>
+
+    
+    <section class="cta-simple full-bleed section section--cta" aria-labelledby="ctaJoinTitle">
+        <div class="cta-s__grid">
+            <div class="cta-s__left">
+                <h2 id="ctaJoinTitle" class="cta-s__title">Rejoignez l’aventure Team Bafounta</h2>
+                <p class="cta-s__lead">Depuis 2004, fondé par Aimé et Filip Bafounta, notre école de boxe à Vénissieux vous propose un cadre moderne, exigeant et humain — pour débutants, loisirs ou compétiteurs.</p>
+                <a href="http://127.0.0.1:8000/inscription" class="btn btn-primary cta-s__btn">S’inscrire maintenant</a>
+            </div>
+            <div class="cta-s__right" aria-hidden="true">
+                <figure class="media-card media-card--video media-card--fixbars"
+                        style="--zoom:1.8; --shiftX:8%; --shiftY:22%;">
+                    <video class="media-card__video" autoplay muted loop playsinline preload="metadata"
+                           poster="http://127.0.0.1:8000/assets/img/club-ambiance.jpg">
+                        <source src="http://127.0.0.1:8000/assets/video/rayan.mp4" type="video/mp4">
+                    </video>
+                    <figcaption class="media-card__badge">Team Bafounta – Vénissieux</figcaption>
+                    <span class="media-card__glow"></span>
+                </figure>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="values section full-bleed" aria-labelledby="valuesTitle">
+        <div class="values__head container">
+            <h2 id="valuesTitle" class="values__title">Nos valeurs</h2>
+            <p class="values__intro">
+                Ce qui nous définit au quotidien : exigence, respect et plaisir de transmettre.
+            </p>
+        </div>
+
+        <div class="values__grid container">
+            <!-- 1 -->
+            <article class="val-card">
+                <figure class="val-card__media">
+                    <img src="http://127.0.0.1:8000/assets/img/valeurs/aimemila.jpg" alt="Séance technique avec un coach" loading="lazy">
+                    <figcaption class="val-card__badge">Expertise reconnue</figcaption>
+                </figure>
+                <h3 class="val-card__title">Expertise reconnue</h3>
+                <p class="val-card__text">
+                    Nos entraîneurs, renommés dans le monde de la boxe, garantissent un enseignement de qualité.
+                </p>
+            </article>
+
+            <!-- 2 -->
+            <article class="val-card">
+                <figure class="val-card__media">
+                    <img src="http://127.0.0.1:8000/assets/img/valeurs/fractionner.jpg" alt="Ambiance de groupe pendant un entraînement" loading="lazy">
+                    <figcaption class="val-card__badge">Partage de passion</figcaption>
+                </figure>
+                <h3 class="val-card__title">Partage de passion</h3>
+                <p class="val-card__text">
+                    Transmettre l’amour de la boxe et ses valeurs : respect de soi, des autres et des règles.
+                </p>
+            </article>
+
+            <!-- 3 -->
+            <article class="val-card">
+                <figure class="val-card__media">
+                    <img src="http://127.0.0.1:8000/assets/img/valeurs/jeremyboxe.jpg" alt="Athlète en progression au sac de frappe" loading="lazy">
+                    <figcaption class="val-card__badge">Progression individuelle</figcaption>
+                </figure>
+                <h3 class="val-card__title">Progression individuelle</h3>
+                <p class="val-card__text">
+                    Chacun progresse à son rythme et dépasse ses limites, toujours dans la bienveillance.
+                </p>
+            </article>
+
+            <!-- 4 -->
+            <article class="val-card">
+                <figure class="val-card__media">
+                    <img src="http://127.0.0.1:8000/assets/img/valeurs/jessroue.jpg" alt="Sourires dans la salle, esprit d’équipe" loading="lazy">
+                    <figcaption class="val-card__badge">Ambiance conviviale</figcaption>
+                </figure>
+                <h3 class="val-card__title">Ambiance conviviale</h3>
+                <p class="val-card__text">
+                    À l’Espace École Sport Boxe, on s’entraîne sérieusement, dans une ambiance chaleureuse et accueillante.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    
+    <section class="members section full-bleed" aria-labelledby="membersTitle">
+        <div class="members__head container">
+            <h2 id="membersTitle" class="members__title">Nos membres</h2>
+            <p class="members__intro">Des trajectoires fortes, une même famille : Team Bafounta.</p>
+        </div>
+
+        <div class="members__grid container" role="list">
+
+            
+            <article class="m-card" role="listitem">
+                <figure class="m-card__media">
+                    <img src="http://127.0.0.1:8000/assets/img/membres/aimebafounta.jpeg" alt="Aimé Bafounta" loading="lazy" decoding="async">
+                    <figcaption class="m-card__badge">Aimé Bafounta</figcaption>
+                </figure>
+
+                <div class="m-card__body">
+                    <h3 class="m-card__name">Aimé Bafounta</h3>
+                    <p class="m-card__meta">18 combats pro — 10 victoires (2 KO), 7 défaites, 1 nul.</p>
+
+                    <button type="button" class="btn btn-ghost m-card__more" aria-expanded="false" data-target="aime">
+                        En savoir plus
+                    </button>
+
+                    <div id="m-aime" class="m-card__details" hidden>
+                        <ul>
+                            <li>Coach principal & cofondateur de l’Espace École Sport Boxe.</li>
+                            <li>Spécialités : technique, ringcraft, préparation mentale.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            
+            <article class="m-card" role="listitem">
+                <figure class="m-card__media">
+                    <img src="http://127.0.0.1:8000/assets/img/membres/jeremyboxe.jpg" alt="Jérémy Peyronnet" loading="lazy" decoding="async">
+                    <figcaption class="m-card__badge">Jérémy Peyronnet</figcaption>
+                </figure>
+
+                <div class="m-card__body">
+                    <h3 class="m-card__name">Jérémy Peyronnet - Président</h3>
+                    <p class="m-card__meta">15 combats amateur — 9 victoires (3 KO), 5 défaites, 1 nul.</p>
+
+                    <button type="button" class="btn btn-ghost m-card__more" aria-expanded="false" data-target="jeremy">
+                        En savoir plus
+                    </button>
+
+                    <div id="m-jeremy" class="m-card__details" hidden>
+                        <ul>
+                            <li>Encadrement des jeunes et boxe éducative.</li>
+                            <li>Focus : cardio, déplacement, combinaisons.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            
+            <article class="m-card" role="listitem">
+                <figure class="m-card__media">
+                    <img src="http://127.0.0.1:8000/assets/img/membres/filipbafounta.jpg" alt="Filip Bafounta" loading="lazy" decoding="async">
+                    <figcaption class="m-card__badge">Filip Bafounta</figcaption>
+                </figure>
+
+                <div class="m-card__body">
+                    <h3 class="m-card__name">Filip Bafounta</h3>
+                    <p class="m-card__meta">
+                        Amateur : 45 combats (35 KO), 2 défaites. Pro : 48 combats (35 KO), 3 défaites.
+                        Gant d’Or du meilleur Espoir, 3× vice-champion de France.
+                    </p>
+
+                    <button type="button" class="btn btn-ghost m-card__more" aria-expanded="false" data-target="filip">
+                        En savoir plus
+                    </button>
+
+                    <div id="m-filip" class="m-card__details" hidden>
+                        <ul>
+                            <li>Coaching avancé : puissance, timing, finitions.</li>
+                            <li>Accompagnement compétiteurs & sparring dirigé.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    
+    
+    <section class="history section full-bleed" aria-labelledby="historyTitle">
+        <div class="history__grid container">
+            <div class="history__left">
+                <h2 id="historyTitle" class="history__title">Notre histoire<span class="accent">.</span></h2>
+                <p class="history__intro">
+                    Fondé en <strong>2004</strong> à Vénissieux par les frères <strong>Aimé</strong> et <strong>Filip Bafounta</strong>,
+                    l’Espace École Sport Boxe est bien plus qu’un simple club : c’est un lieu de vie, de partage et de dépassement de soi.
+                </p>
+
+                <p class="history__text">
+                    Ce qui a commencé comme une salle conviviale est devenu une véritable institution lyonnaise.
+                    Année après année, la <strong>Team Bafounta</strong> a formé des générations de boxeurs, des jeunes débutants aux compétiteurs de haut niveau, dans un esprit de respect, d’exigence et de fraternité.
+                </p>
+
+                <p class="history__text">
+                    Aujourd’hui, le club accueille des adhérents de <strong>5 à 70 ans</strong>, tous animés par la même passion.
+                    Notre pédagogie allie rigueur, bienveillance et ambition, pour que chacun progresse à son rythme et trouve sa place sur le ring comme dans la vie.
+                </p>
+
+                <a href="http://127.0.0.1:8000/le-club" class="btn btn-primary history__cta">Découvrir le club</a>
+            </div>
+
+            <div class="history__right" aria-hidden="true">
+                <figure class="history__media">
+                    <video class="history__video" autoplay muted loop playsinline preload="metadata"
+                           poster="http://127.0.0.1:8000/assets/img/club-histoire-poster.jpg">
+                        
+                        
+                        <source src="http://127.0.0.1:8000/assets/video/filipaime.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Depuis 2004 — Vénissieux</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="history__numbers container" id="historyNumbers">
+            <article>
+                <strong class="counter" data-to="20" data-prefix="+"></strong>
+                <span>ans de passion</span>
+            </article>
+            <article>
+                <strong class="counter" data-to="1000" data-prefix="+"></strong>
+                <span>adhérents formés</span>
+            </article>
+            <article>
+                <strong class="counter" data-to="2"></strong>
+                <span>frères fondateurs</span>
+            </article>
+        </div>
+    </section>
+
+    
+    <section class="cta-prestations section full-bleed" aria-labelledby="ctaPrestationsTitle">
+        <div class="cta-prest__grid container">
+            <div class="cta-prest__left">
+                <h2 id="ctaPrestationsTitle" class="cta-prest__title">
+                    Nos cours de boxe pour <span class="accent">tous les niveaux</span>
+                </h2>
+                <p class="cta-prest__text">
+                    Que vous soyez débutant ou compétiteur, nos coachs adaptent chaque séance à votre rythme.
+                    Découvrez des programmes variés, de l’aéroboxe loisir à la boxe amateur pour progresser,
+                    transpirer et vous dépasser dans une ambiance conviviale.
+                </p>
+                <div class="cta-prest__actions">
+                    <a href="http://127.0.0.1:8000/cours-horaires" class="btn btn-primary">Découvrir nos cours et horaire</a>
+                </div>
+            </div>
+
+            <div class="cta-prest__right" aria-hidden="true">
+                <figure class="media-card media-card--video media-card--fixbars"
+                        style="--zoom:1.5; --shiftX:0%; --shiftY:8%;">
+                    <video class="media-card__video" autoplay muted loop playsinline preload="metadata"
+                           poster="http://127.0.0.1:8000/assets/img/enfants.jpeg">
+                        <source src="http://127.0.0.1:8000/assets/video/entrainement2.mp4" type="video/mp4">
+                    </video>
+                    <figcaption class="media-card__badge">Team Bafounta — En action</figcaption>
+                    <span class="media-card__glow"></span>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="partners section full-bleed" aria-labelledby="partnersTitle">
+        <div class="container">
+            <h2 id="partnersTitle" class="partners__title">Ils nous soutiennent</h2>
+            <p class="partners__subtitle">Partenaires officiels & soutiens institutionnels</p>
+        </div>
+
+        
+        <div class="partners__marquee" aria-label="Logos partenaires (ligne 1)">
+            <ul class="partners__track partners__track--a" style="--speed: 38s;">
+                
+                <li class="partners__item"><a class="partners__link" href="https://www.oms-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/oms" data-fallback-exts="png,jpg,jpeg,webp" alt="OMS Vénissieux"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.creditmutuel.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/creditmutuel" data-fallback-exts="png,jpg,jpeg,webp" alt="Crédit Mutuel"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.auvergnerhonealpes.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/region" data-fallback-exts="png,jpg,jpeg,webp" alt="Région Auvergne-Rhône-Alpes"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://matos2boxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/matos" data-fallback-exts="png,jpg,jpeg,webp" alt="Matos2Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.grandlyon.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/metropole" data-fallback-exts="png,jpg,jpeg,webp" alt="Métropole de Lyon"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ffboxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/ffboxe" data-fallback-exts="jpg,png,jpeg,webp" alt="Fédération Française de Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.lerondpointvenissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/lerondpoint" data-fallback-exts="png,jpg,jpeg,webp" alt="Le Rond Point"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ville-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/venissieux" data-fallback-exts="png,jpg,jpeg,webp" alt="Ville de Vénissieux"></a></li>
+
+                
+                <li class="partners__item"><a class="partners__link" href="https://www.oms-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/oms" data-fallback-exts="png,jpg,jpeg,webp" alt="OMS Vénissieux"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.creditmutuel.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/creditmutuel" data-fallback-exts="png,jpg,jpeg,webp" alt="Crédit Mutuel"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.auvergnerhonealpes.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/region" data-fallback-exts="png,jpg,jpeg,webp" alt="Région Auvergne-Rhône-Alpes"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://matos2boxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/matos" data-fallback-exts="png,jpg,jpeg,webp" alt="Matos2Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.grandlyon.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/metropole" data-fallback-exts="png,jpg,jpeg,webp" alt="Métropole de Lyon"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ffboxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/ffboxe" data-fallback-exts="jpg,png,jpeg,webp" alt="Fédération Française de Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.lerondpointvenissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/lerondpoint" data-fallback-exts="png,jpg,jpeg,webp" alt="Le Rond Point"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ville-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/venissieux" data-fallback-exts="png,jpg,jpeg,webp" alt="Ville de Vénissieux"></a></li>
+            </ul>
+        </div>
+
+        
+        <div class="partners__marquee partners__marquee--b" aria-label="Logos partenaires (ligne 2)">
+            <ul class="partners__track partners__track--b" style="--speed: 42s;">
+                
+                <li class="partners__item"><a class="partners__link" href="https://www.creditmutuel.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/creditmutuel" data-fallback-exts="png,jpg,jpeg,webp" alt="Crédit Mutuel"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.auvergnerhonealpes.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/region" data-fallback-exts="png,jpg,jpeg,webp" alt="Région Auvergne-Rhône-Alpes"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.grandlyon.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/metropole" data-fallback-exts="png,jpg,jpeg,webp" alt="Métropole de Lyon"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ffboxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/ffboxe" data-fallback-exts="jpg,png,jpeg,webp" alt="Fédération Française de Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.oms-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/oms" data-fallback-exts="png,jpg,jpeg,webp" alt="OMS Vénissieux"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ville-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/venissieux" data-fallback-exts="png,jpg,jpeg,webp" alt="Ville de Vénissieux"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://matos2boxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/matos" data-fallback-exts="png,jpg,jpeg,webp" alt="Matos2Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.lerondpointvenissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/lerondpoint" data-fallback-exts="png,jpg,jpeg,webp" alt="Le Rond Point"></a></li>
+
+                
+                <li class="partners__item"><a class="partners__link" href="https://www.creditmutuel.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/creditmutuel" data-fallback-exts="png,jpg,jpeg,webp" alt="Crédit Mutuel"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.auvergnerhonealpes.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/region" data-fallback-exts="png,jpg,jpeg,webp" alt="Région Auvergne-Rhône-Alpes"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.grandlyon.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/metropole" data-fallback-exts="png,jpg,jpeg,webp" alt="Métropole de Lyon"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ffboxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/ffboxe" data-fallback-exts="jpg,png,jpeg,webp" alt="Fédération Française de Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.oms-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/oms" data-fallback-exts="png,jpg,jpeg,webp" alt="OMS Vénissieux"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.ville-venissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/venissieux" data-fallback-exts="png,jpg,jpeg,webp" alt="Ville de Vénissieux"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://matos2boxe.com" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/matos" data-fallback-exts="png,jpg,jpeg,webp" alt="Matos2Boxe"></a></li>
+                <li class="partners__item"><a class="partners__link" href="https://www.lerondpointvenissieux.fr" target="_blank" rel="noopener nofollow"><img loading="lazy" data-base="http://127.0.0.1:8000/assets/img/partners/lerondpoint" data-fallback-exts="png,jpg,jpeg,webp" alt="Le Rond Point"></a></li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<footer class="ft-hero ft" role="contentinfo" aria-labelledby="ft-title">
+    <div class="ft-hero__grid">
+
+        <!-- Colonne gauche -->
+        <div class="ft-hero__left">
+            <header class="ft-head">
+                <h2 class="ft-ghost" id="ft-title">Team Bafounta</h2>
+                <p class="ft-ghost__tag">ESPACE ECOLE SPORT BOXE</p>
+
+                <div class="ft-cta">
+                    <a href="http://127.0.0.1:8000/inscription" class="btn btn-primary">S’inscrire</a>
+                    <a href="http://127.0.0.1:8000/cours-horaires" class="btn btn-ghost">Voir les horaires</a>
+                </div>
+            </header>
+
+            <div class="ft-hero__socials">
+                <!-- Facebook -->
+                <a class="ft-ico ft-ico--fb" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M13.5 21V12.7h2.8l.4-3h-3.2V7.3c0-.9.3-1.5 1.6-1.5h1.8V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.3v2.3H7.8v3h2.6V21h3.1Z"/>
+                    </svg>
+                </a>
+
+                <!-- Instagram -->
+                <a class="ft-ico ft-ico--ig"
+                   href="https://instagram.com"
+                   target="_blank"
+                   rel="noopener"
+                   aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.25-4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 5.5z"/>
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a class="ft-ico ft-ico--tt" href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M16.5 3.1c.3 1.5 1.3 2.8 2.8 3.3.5.2 1 .3 1.5.3v3.2c-1.6-.1-3.2-.6-4.6-1.6V16c0 3.5-2.8 6.3-6.3 6.3A6.3 6.3 0 0 1 3.7 13.7C3.7 10.2 6.5 7.4 10 7.4c.5 0 1 .1 1.5.2v3.3c-.5-.3-1-.4-1.5-.4a3 3 0 1 0 3 3V3h3.5Z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Téléphone -->
+            <div class="contact-line contact-line--static">
+                <a class="contact-line__link is-tel" href="tel:0636132175">
+                    <span class="contact-line__ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"
+                             fill="none" stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6.5 3h3a1 1 0 0 1 1 .8l.7 3.7a1 1 0 0 1-.5 1.1l-1.6 1
+                                     a11.5 11.5 0 0 0 5.3 5.3l1-1.6a1 1 0 0 1 1.1-.5l3.7.7a1 1 0 0 1 .8 1v3
+                                     a1 1 0 0 1-1 1H18C10.8 22 5 16.2 5 9V4a1 1 0 0 1 1-1Z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-line__value">06 36 13 21 75</span>
+                </a>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-line contact-line--static">
+                <a class="contact-line__link is-mail" href="mailto:espaceecolesportboxe@gmail.com">
+                    <span class="contact-line__ico" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"
+                             fill="none" stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                            <path d="M5 7l7 5 7-5"></path>
+                        </svg>
+                    </span>
+                    <span class="contact-line__value">EspaceEcoleSportBoxe@gmail.com</span>
+                </a>
+            </div>
+
+            <address class="ft-hero__addr">
+                Jacques Brel — 7 Av. d’Oschatz · Jean Guimier — Av. Jules Guesde
+            </address>
+
+            <nav class="ft-links" aria-label="Liens utiles du site">
+                <a href="http://127.0.0.1:8000/le-club">Le club</a>
+                <a href="http://127.0.0.1:8000/cours-horaires">Horaires</a>
+                <a href="http://127.0.0.1:8000/inscription">Inscription</a>
+                <a href="http://127.0.0.1:8000/actualites">Actualités</a>
+            </nav>
+        </div>
+
+        <!-- Colonne droite (logo) -->
+        <div class="ft-hero__right">
+            <img src="http://127.0.0.1:8000/assets/img/logo.png" alt="Team Bafounta" class="ft-hero__logo">
+        </div>
+
+    </div>
+
+    <div class="ft-hero__bottom">
+        <p class="ft-hero__copy">© 2026 Team Bafounta — Tous droits réservés</p>
+        <p class="ft-hero__legal">
+            <a href="http://127.0.0.1:8000/assets/docs/mentions-legales-rgpd.pdf" download>Mentions légales & RGPD</a>
+        </p>
+    </div>
+
+    <script src="http://127.0.0.1:8000/assets/js/footer.js?v=1" defer></script>
+</footer>
+
+    <script src="http://127.0.0.1:8000/assets/js/home.js" defer></script>
+
+<script src="http://127.0.0.1:8000/assets/js/theme.js" defer></script>
+</body>
+</html>
