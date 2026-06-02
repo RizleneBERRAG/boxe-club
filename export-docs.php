@@ -16,6 +16,12 @@ $pages = [
 
 foreach ($pages as $url => $path) {
     $html = file_get_contents($base . $url);
+$html = str_replace('http://127.0.0.1:8000/assets/', '/boxe-club/assets/', $html);
+$html = str_replace('http://127.0.0.1:8000/storage/', '/boxe-club/storage/', $html);
+$html = str_replace('href="/assets/', 'href="/boxe-club/assets/', $html);
+$html = str_replace('src="/assets/', 'src="/boxe-club/assets/', $html);
+$html = str_replace('href="/', 'href="/boxe-club/', $html);
+$html = str_replace('src="/', 'src="/boxe-club/', $html);
 
     if ($html === false) {
         echo "Erreur : $url\n";
