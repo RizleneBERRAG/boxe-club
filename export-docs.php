@@ -9,32 +9,29 @@ $pages = [
     '/cours-horaires' => 'docs/cours-horaires/index.html',
     '/tarifs' => 'docs/tarifs/index.html',
     '/contact' => 'docs/contact/index.html',
-    '/mentions-legales' => 'docs/mentions-legales/index.html',
 ];
 
 @mkdir(__DIR__ . '/docs', 0777, true);
 
 foreach ($pages as $url => $path) {
-    $html = file_get_contents($base . $url);
-$html = str_replace('http://127.0.0.1:8000/assets/', '/boxe-club/assets/', $html);
-$html = str_replace('http://127.0.0.1:8000/storage/', '/boxe-club/storage/', $html);
-$html = str_replace('href="/assets/', 'href="/boxe-club/assets/', $html);
-$html = str_replace('src="/assets/', 'src="/boxe-club/assets/', $html);
-$html = str_replace('href="/', 'href="/boxe-club/', $html);
-$html = str_replace('src="/', 'src="/boxe-club/', $html);
+    $html = @file_get_contents($base . $url);
 
     if ($html === false) {
         echo "Erreur : $url\n";
         continue;
     }
 
-    // Corrige les chemins absolus Laravel pour GitHub Pages
-    $html = str_replace('href="/assets/', 'href="' . $repoBase . '/assets/', $html);
-    $html = str_replace('src="/assets/', 'src="' . $repoBase . '/assets/', $html);
-    $html = str_replace('href="/storage/', 'href="' . $repoBase . '/storage/', $html);
-    $html = str_replace('src="/storage/', 'src="' . $repoBase . '/storage/', $html);
+    // Assets CSS / JS / images / vidéos
+    $html = str_replace($base . '/assets/', $repoBase . '/assets/', $html);
+    $html = str_replace('/assets/', $repoBase . '/assets/', $html);
 
-    // Corrige les liens internes
+    // Liens internes
+    $html = str_replace($base . '/le-club', $repoBase . '/le-club/', $html);
+    $html = str_replace($base . '/cours-horaires', $repoBase . '/cours-horaires/', $html);
+    $html = str_replace($base . '/tarifs', $repoBase . '/tarifs/', $html);
+    $html = str_replace($base . '/contact', $repoBase . '/contact/', $html);
+    $html = str_replace($base . '/', $repoBase . '/', $html);
+
     $html = str_replace('href="/le-club"', 'href="' . $repoBase . '/le-club/"', $html);
     $html = str_replace('href="/cours-horaires"', 'href="' . $repoBase . '/cours-horaires/"', $html);
     $html = str_replace('href="/tarifs"', 'href="' . $repoBase . '/tarifs/"', $html);
