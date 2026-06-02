@@ -1,0 +1,315 @@
+:root {
+    --black: #0A0A0A;
+    --red: #E10600;
+    --white: #fff;
+    --gray: #1e1e1e;
+    --ink: #111;
+    --muted: #6b7280;
+}
+
+.attest-wrap {
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 0 16px
+}
+
+.no-print {
+    display: block
+}
+
+/* wizard mini */
+.wiz {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0 18px
+}
+
+.wiz-step {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    border: 2px solid rgba(255, 255, 255, .18);
+    color: #ddd
+}
+
+.wiz-step.done {
+    background: rgba(34, 197, 94, .18);
+    border-color: rgba(34, 197, 94, .45);
+    color: #9be7b0
+}
+
+.wiz-step.active {
+    background: rgba(225, 6, 0, .18);
+    border-color: #E10600;
+    color: #fff
+}
+
+.wiz-line {
+    height: 2px;
+    flex: 0 1 36px;
+    background: rgba(255, 255, 255, .15)
+}
+
+.wiz-label {
+    color: #bbb;
+    font-size: 12px;
+    margin-left: 4px
+}
+
+/* carte A4 */
+.attest-card {
+    background: #fff;
+    color: var(--ink);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, .06);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+    overflow: hidden;
+}
+
+.attest-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-bottom: 1px solid rgba(0, 0, 0, .06)
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--red);
+    color: #fff;
+    font-weight: 900;
+    display: grid;
+    place-items: center
+}
+
+.brand-text small {
+    color: #777;
+    display: block;
+    margin-top: -2px
+}
+
+.head-meta {
+    display: flex;
+    gap: 18px;
+    align-items: flex-end;
+    color: #555
+}
+
+.head-meta .date {
+    font-variant-numeric: tabular-nums
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 22px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid
+}
+
+.status-row .icon {
+    font-size: 18px;
+    line-height: 1
+}
+
+.status-row.paid {
+    background: #f0fff4;
+    border-color: #c6f6d5;
+    color: #166534
+}
+
+.status-row.pending {
+    background: #fff7ed;
+    border-color: #fed7aa;
+    color: #9a3412
+}
+
+.attest-body {
+    padding: 22px
+}
+
+.attest-body h1 {
+    font-size: 24px;
+    margin: 2px 0 12px
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap: 14px
+}
+
+@media (max-width: 720px) {
+    .grid-2 {
+        grid-template-columns:1fr
+    }
+}
+
+.box {
+    background: #fafafa;
+    border: 1px solid rgba(0, 0, 0, .06);
+    border-radius: 12px;
+    padding: 12px 14px
+}
+
+.k {
+    font-size: 12px;
+    letter-spacing: .06em;
+    color: #6b7280;
+    text-transform: uppercase
+}
+
+.v {
+    font-weight: 700;
+    margin-top: 2px
+}
+
+.downloads {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 800;
+    border: 1px solid transparent
+}
+
+.btn-primary {
+    background: var(--red);
+    color: #fff
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: rgba(255, 255, 255, .15);
+    color: #fff
+}
+
+.dl-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.dl-link {
+    padding: 10px 12px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    color: #334155;
+    background: #f8fafc
+}
+
+.dl-link:hover {
+    background: #eef2f7
+}
+
+.dl-link.is-locked {
+    color: #94a3b8;
+    border-color: #e2e8f0;
+    background: #f8fafc;
+    position: relative
+}
+
+.dl-link.is-locked::after {
+    content: "🔒";
+    margin-left: 6px
+}
+
+.attest-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-top: 1px solid rgba(0, 0, 0, .06);
+    color: #6b7280
+}
+
+.attest-foot a {
+    color: #ef4444;
+    text-decoration: none
+}
+
+.after-actions {
+    margin-top: 16px;
+    text-align: center
+}
+
+/* Stamp PAID */
+.stamp {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    color: #e10600;
+    opacity: .12;
+    font-weight: 900;
+    font-size: 120px;
+    letter-spacing: .12em;
+    pointer-events: none
+}
+
+/* -------- Impression A4 -------- */
+@media print {
+    :root {
+        color-scheme: light
+    }
+
+    body {
+        background: #fff !important
+    }
+
+    .site-header, .site-footer, .wiz, .after-actions {
+        display: none !important
+    }
+
+    .attest-wrap {
+        max-width: 100%;
+        padding: 0;
+        margin: 0
+    }
+
+    .attest-card {
+        box-shadow: none;
+        border: 0;
+        border-radius: 0
+    }
+
+    .attest-head, .attest-body, .attest-foot {
+        padding: 14mm
+    }
+
+    .downloads .btn {
+        display: none
+    }
+
+    a:link, a:visited {
+        text-decoration: none;
+        color: #111
+    }
+
+    @page {
+        size: A4;
+        margin: 10mm
+    }
+}

@@ -1,0 +1,314 @@
+/* ===================== PAGE CONTACT — TEAM BAFOUNTA ===================== */
+
+.contact-hero{
+    max-width: 1200px;
+    margin: 80px auto 70px;
+    padding: 0 16px;
+    color:#fff;
+}
+
+.contact-hero__grid{
+    display:grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .95fr);
+    gap:40px;
+    align-items:flex-start;
+}
+
+/* ---- COLONNE GAUCHE ---- */
+
+.ft-head{ margin-bottom:14px; }
+
+.contact-hero__title,
+.ft-head h1{
+    font-size:clamp(30px,4.6vw,40px);
+    font-weight:900;
+    margin:0 0 8px;
+}
+
+.contact-hero__subtitle,
+.ft-ghost__tag{
+    margin:0 0 16px;
+    color:#d0d0d0;
+    max-width:52ch;
+    font-size:14.5px;
+}
+
+/* ---- Carte / bloc adresses ---- */
+
+.contact-map{
+    background: radial-gradient(circle at top left, rgba(225,6,0,.24), transparent 55%) #050505;
+    border-radius:20px;
+    padding:16px 16px 18px;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 22px 70px rgba(0,0,0,.7);
+}
+
+.contact-map__inner{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    background:#000;
+}
+
+/* FOND DE CARTE / HALO */
+.contact-map__bg{
+    position:relative;
+    min-height:220px;
+    overflow:hidden;
+    border-radius:22px;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(225,6,0,.28), transparent 60%),
+        radial-gradient(circle at 82% 70%, rgba(225,6,0,.18), transparent 60%),
+        linear-gradient(135deg,#050505,#111);
+}
+
+.contact-map__grid-overlay{
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:34px 34px;
+    mix-blend-mode:soft-light;
+    opacity:.7;
+    pointer-events:none;
+}
+
+.contact-map__glow{
+    position:absolute;
+    inset:auto 12% -40px 12%;
+    height:130px;
+    background:radial-gradient(60% 80% at 50% 20%, rgba(225,6,0,.45), transparent 70%);
+    filter:blur(10px);
+    pointer-events:none;
+}
+
+/* IFRAME – carte réelle */
+.contact-map__iframe{
+    width: 100%;
+    height: 100%;
+    min-height: 260px; /* Tu peux augmenter pour un plan plus grand */
+    border: 0;
+    pointer-events: auto; /* Important */
+}
+
+/* Pills adresse */
+.contact-map__places{
+    position:absolute;
+    inset:auto 10px 10px 10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    z-index:2;
+}
+.contact-map__pill{
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(0,0,0,.65);
+    padding:6px 12px;
+    font-size:12px;
+    color:#eee;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:background .18s ease, border-color .18s ease, transform .12s ease, box-shadow .18s ease;
+}
+.contact-map__pill::before{
+    content:"";
+    width:7px; height:7px; border-radius:50%;
+    background:rgba(255,255,255,.5);
+}
+.contact-map__pill.is-active{
+    background:rgba(225,6,0,.9);
+    border-color:rgba(255,255,255,.4);
+    box-shadow:0 10px 24px rgba(225,6,0,.5);
+}
+.contact-map__pill.is-active::before{ background:#fff; }
+.contact-map__pill:hover{ transform:translateY(-1px); }
+
+/* Détails salle */
+.contact-map__details{ margin-top:12px; }
+.contact-map__item{ display:none; animation: contactFade .25s ease-out; }
+.contact-map__item.is-active{ display:block; }
+.contact-map__item h2{
+    margin:0 0 4px;
+    font-size:16px;
+    font-weight:800;
+}
+.contact-map__item p{
+    margin:0;
+    font-size:14px;
+    color:#d8d8d8;
+}
+.contact-map__tag{
+    margin-top:4px;
+    font-size:13px;
+    color:#ffbdbd;
+}
+
+@keyframes contactFade{
+    from{ opacity:0; transform:translateY(4px); }
+    to{ opacity:1; transform:none; }
+}
+
+/* Chips */
+.contact-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+}
+.chip{
+    font-size:12px;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    color:#e2e2e2;
+}
+
+/* ---- COLONNE FORMULAIRE ---- */
+
+.contact-hero__right{ position:relative; }
+
+.contact-form-card{
+    background: radial-gradient(circle at top right, rgba(225,6,0,.22), transparent 55%) #101010;
+    border-radius:20px;
+    padding:20px 20px 22px;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 22px 60px rgba(0,0,0,.8);
+}
+
+.contact-form-card__title{
+    margin:0 0 6px;
+    font-size:20px;
+    font-weight:800;
+}
+.contact-form-card__lead{
+    margin:0 0 16px;
+    font-size:14px;
+    color:#d0d0d0;
+}
+
+/* Champs */
+#contact-form .field{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:12px;
+}
+#contact-form .field-row{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap:12px;
+}
+
+#contact-form label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    margin-bottom:5px;
+    color:rgba(255,255,255,.78);
+}
+
+#contact-form input,
+#contact-form textarea{
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(0,0,0,.8);
+    color:#fff;
+    padding:9px 11px;
+    font-size:14px;
+    outline:none;
+    transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+#contact-form input:focus,
+#contact-form textarea:focus{
+    border-color:#E10600;
+    box-shadow:0 0 0 1px rgba(225,6,0,.6);
+    background:rgba(0,0,0,.95);
+}
+
+.field--bottom{
+    margin-top:6px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.contact-rgpd{
+    font-size:11px;
+    color:#b3b3b3;
+    margin:0;
+}
+
+/* Loader bouton */
+.contact-submit{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+.contact-submit.is-loading span{ visibility:hidden; }
+.contact-submit.is-loading::after{
+    content:"";
+    position:absolute;
+    width:18px; height:18px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.4);
+    border-top-color:#fff;
+    animation: contactSpin .7s linear infinite;
+}
+@keyframes contactSpin{ to{ transform:rotate(360deg); } }
+
+.contact-feedback{
+    min-height:18px;
+    font-size:13px;
+    margin-top:4px;
+}
+
+/* Honeypot */
+.contact-hp{
+    position:absolute;
+    left:-9999px;
+    opacity:0;
+}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+    .contact-hero__grid{
+        grid-template-columns:1fr;
+        gap:32px;
+    }
+    .contact-form-card{ order:-1; }
+}
+
+@media (max-width:640px){
+    #contact-form .field-row{
+        grid-template-columns:1fr;
+    }
+    .contact-map__places{
+        position:static;
+        padding:8px 0 2px;
+    }
+}
+
+/* Logo watermark sur la carte */
+.contact-map__logo{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:3;
+    pointer-events:none; /* pour ne pas bloquer la carte */
+    opacity:.22; /* effet watermark */
+    filter:drop-shadow(0 0 8px rgba(0,0,0,.6));
+}
+
+.contact-map__logo img{
+    width:110px;
+    height:auto;
+    object-fit:contain;
+}
